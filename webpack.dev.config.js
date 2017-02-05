@@ -3,6 +3,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     all: __dirname + '/assets/js/index.js',
+
   },
   resolve: {
     root: __dirname + '/assets/js',
@@ -13,16 +14,21 @@ module.exports = {
     publicPath: '/assets',
   },
   module: {
-    loaders: [
-      {
+    loaders: [{
         test: /.*\.sass$/,
         loaders: ['style', 'css', 'sass', 'import-glob']
+      },
+      {
+        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+        loader: "file"
       },
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
-        query: { presets: ['es2015'] }
+        query: {
+          presets: ['es2015']
+        }
       }
     ]
   },
@@ -39,4 +45,3 @@ module.exports = {
     stats: 'minimal'
   },
 };
-
