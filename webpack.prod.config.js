@@ -21,6 +21,10 @@ module.exports = {
         loader: extractSass.extract(['css', 'sass', 'import-glob'])
       },
       {
+        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+        loader: "file"
+      },
+      {
         test: /\.js$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
