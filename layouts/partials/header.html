@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="<%= settings.language %>">
+
+<head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    {{ if eq .Site.Params.env "production" }}
+        <link rel="stylesheet" href="/assets/all.css"> 
+    {{ end }} 
+    {{ if isset .Params "seometatags" }} 
+        {{ .Params.seometatags | safeHTML }} 
+    {{ end }}
+</head>
+
+<body>
+    <div class="container outer">
+        <header>
+            <div class="container inner">
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Deventer</a></li>
+                        <li><a href="#">Programma</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Nieuws</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>

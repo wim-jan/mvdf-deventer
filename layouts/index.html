@@ -1,0 +1,31 @@
+{{ partial "header.html" . }}
+<div class="container outer home">
+    <div class="container inner">
+        <section class="header">
+            <div class="col-md-4">
+                <img src="" />
+            </div>
+            <div class="col-md-8">
+                <h1>{{ .Site.Data.index.title }}</h1>
+                <h2>{{ .Site.Data.index.subtitle }}</h2>
+                <p>
+                    {{ .Site.Data.index.introduction }}
+                </p>
+            </div>
+        </section>
+    </div>
+    <div class="container inner">
+        <section class="events">
+            <div class="deventer col-md-4">
+                <h2>{{ .Site.Data.deventer.title }}</h2>
+                <p>
+                    {{ .Site.Data.deventer.introduction }}
+                </p>
+            </div>
+            <div class="events col-md-8">
+
+            </div>
+        </section>
+    </div>
+</div>
+{{ partial "footer.html" . }}

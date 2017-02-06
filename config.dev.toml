@@ -1,0 +1,15 @@
+baseurl = "/"
+
+[params]
+  env = "development"
+
+[[menu.main]]
+  name = "Home"
+  weight = 1
+  identifier = "home"
+  url = "/"
+
+# datocms:start
+title = "Maand van de Filosofie Deventer"
+languageCode = "nl"
+# datocms:end
