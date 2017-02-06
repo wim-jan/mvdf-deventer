@@ -29,11 +29,7 @@
     "bootstrap-sass": "^3.3.7",
     "concurrently": "^3.1.0",
     "css-loader": "^0.26.1",
-<<<<<<< HEAD
     "datocms-client": "^0.3.15",
-=======
-    "datocms-client": "^0.3.10",
->>>>>>> f3600232a28ac39ba9ee46c18074c2ede818bba2
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.10.0",
     "html-tag": "^0.2.1",

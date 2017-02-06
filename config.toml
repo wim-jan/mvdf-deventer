@@ -1,9 +1,3 @@
-<<<<<<< HEAD
 baseurl = "http://replace-this-with-your-hugo-site.com/"
 languageCode = "nl"
 title = "Maand van de Filosofie Deventer"
-=======
-baseurl = "localhost"
-languageCode = "nl-nl"
-title = "Maand van de Filosofie Deventer"
->>>>>>> f3600232a28ac39ba9ee46c18074c2ede818bba2
