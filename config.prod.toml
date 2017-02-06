@@ -10,6 +10,11 @@ baseurl = "/"
   url = "/"
 
 # datocms:start
+<<<<<<< HEAD
 title = "Maand van de Filosofie Deventer"
 languageCode = "nl"
+=======
+title = "Creative Inc."
+languageCode = "en"
+>>>>>>> f3600232a28ac39ba9ee46c18074c2ede818bba2
 # datocms:end
