@@ -2,5 +2,7 @@
 node_modules
 public
 content
+!content/.gitkeep
 data
+!data/.gitkeep
 npm-debug.log
