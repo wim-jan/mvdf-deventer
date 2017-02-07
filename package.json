@@ -4,11 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build:hugo": "NODE_ENV=production hugo --config config.prod.toml",
+    "build:hugo": "NODE_ENV=production hugo --config ./config.prod.toml; exit 0",
     "build:assets": "NODE_ENV=production webpack -p --config webpack.prod.config.js",
     "build:datocms": "dato dump --config=dato.config.js --verbose",
     "build": "npm run build:datocms && npm run build:hugo && npm run build:assets",
-    "build:verbose": "dato dump --config=dato.config.js --verbose && NODE_ENV=production hugo --config config.prod.toml && NODE_ENV=production webpack -p --config webpack.prod.config.js",
     "build:offline": "npm run build:hugo && npm run build:assets",
     "start:assets": "NODE_ENV=development webpack-dev-server --open --content-base public/ --config webpack.dev.config.js",
     "start:hugo": "hugo -w --config config.dev.toml",
