@@ -24,6 +24,11 @@
             </div>
             <div class="events col-md-8">
 
+                {{ range where .Data.Pages "Section" "_event" }}
+                <div class="grid__cell grid__cell--20">
+                    {{ partial "event-preview.html" . }}
+                </div>
+                {{ end }}
             </div>
         </section>
     </div>
