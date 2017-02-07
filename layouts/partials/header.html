@@ -8,9 +8,6 @@
     {{ if eq .Site.Params.env "production" }}
         <link rel="stylesheet" href="/assets/all.css"> 
     {{ end }} 
-    {{ if isset .Params "seometatags" }} 
-        {{ .Params.seometatags | safeHTML }} 
-    {{ end }}
 </head>
 
 <body>
