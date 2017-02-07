@@ -1,7 +1,5 @@
 module.exports = (dato, root, i18n) => {
 
-  i18n.locale = 'nl';
-
   root.createDataFile('site.yaml', 'yaml', dato.site.toMap());
 
   root.directory('./data', dir => {
