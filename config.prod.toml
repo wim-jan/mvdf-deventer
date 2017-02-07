@@ -12,5 +12,4 @@ baseurl = "/"
 # datocms:start
 title = "Maand van de Filosofie Deventer"
 languageCode = "nl"
-defaultContentLanguage = "nl"
 # datocms:end
