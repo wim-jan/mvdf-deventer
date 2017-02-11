@@ -1,4 +1,5 @@
 {{ partial "header.html" . }}
+
 <div class="container outer home">
     <div class="container inner">
         <section class="header">
@@ -15,27 +16,31 @@
         </section>
     </div>
 </div>
-<div class="container outer">
+
+<div class="container outer events">
     <div class="container inner">
-        <section class="events">
+        <section>
             <div class="deventer col-md-4">
                 <h2>{{ .Site.Data.deventer.title }}</h2>
                 <p>
-                    {{ .Site.Data.deventer.introduction }}
+                    {{ .Site.Data.deventer.introduction | markdownify }}
                 </p>
             </div>
             <div class="events col-md-8">
-
-                {{ range where .Data.Pages "Section" "_event" }}
-                <div class="grid__cell grid__cell--20">
-                    {{ partial "event-preview.html" . }}
+                <div class="slide-container">
+                    {{ range where .Data.Pages "Section" "_event" }}
+                        {{ partial "event-preview.html" . }}
+                        {{ partial "event-preview.html" . }}
+                        {{ partial "event-preview.html" . }}
+                        {{ partial "event-preview.html" . }}
+                    {{ end }}
                 </div>
-                {{ end }}
             </div>
         </section>
         <section class="map"></section>
     </div>
 </div>
+
 <div class="container outer">
     <div class="container inner">
         <section class="news">
@@ -62,4 +67,5 @@
         </section>
     </div>
 </div>
+
 {{ partial "footer.html" . }}

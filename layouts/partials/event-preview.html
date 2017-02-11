@@ -1,7 +1,18 @@
 <div class="event preview" data-coordinates="{ {{ .Params.location.latitude }}, {{ .Params.location.longitude }} }">
-    <h3>{{ .Title }}</h3>
-    <img src="{{ .Params.photo.url }}" />
-    <p>
-        {{ .Params.introduction }}
-    </p>
+    <div class="inner">
+        <span class="date">
+            <span class="day">1</span>
+            april - 2017
+        </span>
+        <div class="poster" style="background-image: url(/assets/img/asdasd.jpg)">
+            <!-- {{ .Params.photo.url }} -->
+            <span class="banner">
+                <h3>{{ .Title }}</h3>
+                <span class="speaker">Joke J. Hermsen</span>
+            </span>
+        </div>
+        <p>
+            {{ .Params.introduction }}
+        </p>
+    </div>
 </div>

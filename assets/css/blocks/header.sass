@@ -1,6 +1,9 @@
 header
-    @include jagged-border($red, #fff)
-    background-color: $red;
+    @include default()
+    @include zigzag($red, transparent)
+    position: relative
+    display: block
+    background-color: $red
 
     nav
         display: flex
