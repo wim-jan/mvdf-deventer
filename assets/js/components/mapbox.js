@@ -26,16 +26,29 @@ var MapBox = {
         elements.forEach((el) => {
             console.log()
             if (el.dataset.coordinates && JSON.parse(el.dataset.coordinates).length > 0)
-                this.coordinates.push(JSON.parse(el.dataset.coordinates))
+                this.coordinates.push({
+                    'id': el.dataset.id,
+                    'latlon': JSON.parse(el.dataset.coordinates)
+                })
         })
     },
 
     addMarkers: function() {
         this.coordinates.forEach((c) => {
-            console.log(c)
-            L.marker(c).addTo(this.map)
+            L.marker(c.latlon).addTo(this.map)
+                .on('click', (e) => {
+                    this.highlightEvent(c.id)
+                })
         })
     },
+
+    highlightEvent: function(id) {
+        document.querySelectorAll('.event.preview.highlight').forEach((ce) => {
+            ce.className = ce.className.replace(' highlight', '')
+        })
+        var event = document.querySelector('div[data-id="' + id + '"]')
+        event.className += ' highlight'
+    }
 };
 
 module.exports = MapBox;

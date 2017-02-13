@@ -38,5 +38,5 @@ HTMLElement.prototype.pseudoStyle = function(element,prop,value){
 import eventPreview from './components/event-preview'
 import mapBox from './components/mapbox'
 
-eventPreview()
+eventPreview.init()
 mapBox.init()
