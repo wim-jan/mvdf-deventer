@@ -7,7 +7,6 @@ export default function eventPreview() {
 
     var position = function () {
         zigzags.forEach((z) => {
-            console.log(z.getBoundingClientRect().left % 300)
             z.style.left = Math.ceil(0 - (z.getBoundingClientRect().left % 300)) + 'px'
         })
     }

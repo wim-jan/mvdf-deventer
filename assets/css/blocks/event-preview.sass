@@ -5,12 +5,12 @@
         //     bottom: -60px
         //     z-index: 100
         //     background-position-x: 0px
-        @include transition(transform .5s, background-color .5s)
+        @include transition(transform .1s, background-color .1s)
 
         background-color: $red
         transform: scale(1)
         height: calc(100% + 30px)
-        border-left: 1px solid $light
+        // border-left: 1px solid $light
         min-width: 300px
         padding: 30px 15px 0
         position: relative
@@ -25,6 +25,10 @@
             background-color: $purple
             transform: scale(1.1)
             z-index: 200
+            border-color: rgba(0,0,0,0)
+
+            hr
+                opacity: 0
 
             .zigzag
                 .inner
@@ -39,10 +43,18 @@
                     width: 1000px
                     height: 30px
                     top: -30px
-                    z-index: 300
+                    opacity: 1
+        hr
+            @include transition(opacity .1s)
+            width: 1px
+            height: 300px
+            position: absolute
+            background-color: $light
+            left: calc(-15px / 2)
+            top: -20px
+            opacity: 1
 
         .inner
-
             span.date
                 display: block
                 width: 100%
@@ -81,7 +93,8 @@
             overflow: hidden
 
             .inner
-                @include transition(background .5s)
+                @include transition-delay(.1s)
+                @include transition(background .1s)
                 background: linear-gradient(45deg, transparent 30px, $red 0), linear-gradient(-45deg, transparent 30px, $red 0)
                 background-position: left bottom
                 background-repeat: repeat-x
@@ -93,22 +106,4 @@
                 width: 1000px
                 height: 30px
                 top: -30px
-                z-index: 300
-
-    // &:nth-child(1) .zigzag .inner
-    //         left: 0px
-
-    // &:nth-child(2) .zigzag .inner 
-    //         left: -8px
-
-    // &:nth-child(3) .zigzag .inner 
-    //         left: -16px
-
-    // &:nth-child(4) .zigzag .inner 
-    //         left: -24px
-
-    // &:nth-child(5) .zigzag .inner 
-    //         left: -32px
-
-    // &:nth-child(6) .zigzag .inner 
-    //         left: -40px
+                opacity: 0
