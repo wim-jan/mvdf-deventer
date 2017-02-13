@@ -1,6 +1,7 @@
 export default function eventPreview() {
 
     const zigzags = document.querySelectorAll('.event.preview .zigzag .inner');
+    return;
     if (!zigzags) return;
 
     var resizeTimer

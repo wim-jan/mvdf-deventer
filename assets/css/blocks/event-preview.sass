@@ -1,16 +1,9 @@
 .event
     &.preview
-        // @include zigzag($purple, transparent, 30px)
-        //     bottom: 0
-        //     bottom: -60px
-        //     z-index: 100
-        //     background-position-x: 0px
         @include transition(transform .1s, background-color .1s)
-
         background-color: $red
         transform: scale(1)
         height: calc(100% + 30px)
-        // border-left: 1px solid $light
         min-width: 300px
         padding: 30px 15px 0
         position: relative
@@ -22,8 +15,9 @@
         flex-basis: auto
 
         &:hover
+            @include box-shadow(0 0 10px -4px black)
             background-color: $purple
-            transform: scale(1.1)
+            transform: scale(1.05)
             z-index: 200
             border-color: rgba(0,0,0,0)
 
@@ -39,15 +33,15 @@
                     content: " "
                     display: block
                     position: absolute
-                    left: 0px
+                    left: -15px
                     width: 1000px
                     height: 30px
-                    top: -30px
+                    top: 0
                     opacity: 1
         hr
             @include transition(opacity .1s)
             width: 1px
-            height: 300px
+            height: calc(100% - 50px)
             position: absolute
             background-color: $light
             left: calc(-15px / 2)
@@ -55,6 +49,8 @@
             opacity: 1
 
         .inner
+            padding: 0
+            
             span.date
                 display: block
                 width: 100%
@@ -102,8 +98,8 @@
                 content: " "
                 display: block
                 position: absolute
-                left: 0px
+                left: -15px
                 width: 1000px
                 height: 30px
-                top: -30px
+                top: 0
                 opacity: 0

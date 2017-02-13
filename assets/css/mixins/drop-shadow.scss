@@ -1,0 +1,6 @@
+@mixin drop-shadow($content) {
+    -webkit-box-shadow: $content;
+    -moz-box-shadow: $content;
+    -o-box-shadow: $content;
+    box-shadow: $content;
+}
