@@ -30,15 +30,16 @@
                 <div class="slide-container">
                     {{ range where .Data.Pages "Section" "_event" }}
                         {{ partial "event-preview.html" . }}
-                        {{ partial "event-preview.html" . }}
-                        {{ partial "event-preview.html" . }}
-                        {{ partial "event-preview.html" . }}
                     {{ end }}
                 </div>
             </div>
         </section>
-        <section class="map"></section>
     </div>
+</div>
+<div class="container outer map">
+    <section class="map">
+        <div id="map-container"></div>
+    </section>
 </div>
 
 <div class="container outer">
