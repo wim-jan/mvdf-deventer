@@ -27,13 +27,16 @@
                 </p>
             </div>
             <div class="events col-md-8">
-                <div class="slide-container">
-                    {{ range where .Data.Pages "Section" "_event" }}
-                        {{ partial "event-preview.html" . }}
-                    {{ end }}
-                </div>
             </div>
         </section>
+    </div>
+    <div class="event-slider col-md-8 col-md-offset-4">
+        <div class="slide-container">
+
+            {{ range where .Data.Pages "Section" "_event" }}
+                {{ partial "event-preview.html" . }}
+            {{ end }}
+        </div>
     </div>
 </div>
 <div class="container outer map">

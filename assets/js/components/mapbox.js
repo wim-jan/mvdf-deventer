@@ -1,3 +1,5 @@
+import eventPreview from './event-preview'
+
 var MapBox = {
     
     apiToken: 'pk.eyJ1Ijoid2p2ZGhvZWsiLCJhIjoiY2l6NGg0eGVhMDAxdTJ3cGphYXpqZHduMyJ9.AdCJmSEMsSnYpiBVKTNihA',
@@ -37,17 +39,14 @@ var MapBox = {
         this.coordinates.forEach((c) => {
             L.marker(c.latlon).addTo(this.map)
                 .on('click', (e) => {
+                    console.log(c)
                     this.highlightEvent(c.id)
                 })
         })
     },
 
     highlightEvent: function(id) {
-        document.querySelectorAll('.event.preview.highlight').forEach((ce) => {
-            ce.className = ce.className.replace(' highlight', '')
-        })
-        var event = document.querySelector('div[data-id="' + id + '"]')
-        event.className += ' highlight'
+        eventPreview.highlight(id)
     }
 };
 

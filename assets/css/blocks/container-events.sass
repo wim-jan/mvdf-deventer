@@ -13,11 +13,30 @@
 
     .events
         display: flex
+        position: relative
 
         .slide-container
             display: flex
             flex-direction: row
-            position: relative
-            // overflow: hidden
             width: 100%
             margin-top: -30px
+
+    .event-slider
+        overflow: hidden;
+        z-index: 200
+        margin-bottom: -60px
+        margin-top: calc(-35% - 15px)
+        height: 100%
+        content: ''
+        position: relative
+        min-height: 50vh
+
+        .slide-container
+            @include transition(left 1s)
+            @include transition-timing-function(ease-out)
+            display: block
+            position: absolute
+            width: 9999px
+            height: calc(100% - 60px)
+            padding-top: 15px
+            left: 15px
