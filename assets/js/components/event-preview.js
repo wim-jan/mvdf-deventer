@@ -1,6 +1,7 @@
 var EventPreview = {
     events: [],
     zigzags: [],
+    eventColumn: null,
     eventSlider: null,
     sliderContainer: null,
     resizeTimer: null,
@@ -9,18 +10,24 @@ var EventPreview = {
     init: function() {
         this.events = document.querySelectorAll('.event.preview')
         this.zigzags = document.querySelectorAll('.event.preview .zigzag .inner')
+        this.eventColumn = document.querySelector('.events.col-md-8')
         this.eventSlider = document.querySelector('.event-slider')
         this.sliderContainer = document.querySelector('.event-slider .slide-container')
         if (!this.zigzags) return;
 
         this.attachListeners()
+        setTimeout(() => {
+            this.fillOutToRight()
+        })
     },
 
     attachListeners: function() {
+        var self = this
         window.addEventListener('resize', (e) => {
             clearTimeout(this.resizeTimer);
-            this.resizeTimer = setTimeout(function () {
-                this.position()
+            this.resizeTimer = setTimeout(() => {
+                self.position()
+                self.fillOutToRight()
             }, 500);
         })
         this.events.forEach((ev) => {
@@ -36,6 +43,13 @@ var EventPreview = {
         this.zigzags.forEach((z) => {
             z.style.left = Math.ceil(0 - (z.getBoundingClientRect().left % 300)) + 'px'
         })
+    },
+
+    fillOutToRight: function() {
+        var dRect = document.querySelector('.deventer.col-md-4').getBoundingClientRect(),
+            width = window.innerWidth
+
+        this.eventColumn.style.width = width - dRect.right + 'px'
     },
 
     getEventById: function(id) {

@@ -1,9 +1,11 @@
 .container.events
     @include zigzag($red, transparent)
         z-index: 100
+        margin-top: 15px
         
     background-color: $red
     color: #fff
+    height: 450px
 
     section
         display: flex
@@ -13,7 +15,8 @@
 
     .events
         display: flex
-        position: relative
+        position: absolute
+        right: 0
 
         .slide-container
             display: flex
@@ -22,21 +25,30 @@
             margin-top: -30px
 
     .event-slider
-        overflow: hidden;
+        overflow: hidden
         z-index: 200
         margin-bottom: -60px
-        margin-top: calc(-35% - 15px)
-        height: 100%
-        content: ''
-        position: relative
-        min-height: 50vh
+        /* margin-top: -448px */
+        height: calc(100% + 120px)
+        /* content: '' */
+        position: absolute
+        min-height: calc(450px + 45px)
+        /* margin-left: 39% */
+        /* min-width: 9999px */
+        margin-top: -40px
+        right: 0
+        width: 100%
+        min-width: 100%
+        left: 0
 
         .slide-container
             @include transition(left 1s)
-            @include transition-timing-function(ease-out)
+            @include transition-timing-function(ease-out)    
             display: block
             position: absolute
             width: 9999px
-            height: calc(100% - 60px)
+            height: calc(100% + -10px)
             padding-top: 15px
             left: 15px
+            z-index: 400
+            margin-top: -5px
