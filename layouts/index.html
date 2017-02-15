@@ -29,9 +29,10 @@
             <div class="events col-md-8">
                 <div class="event-slider">
                     <div class="slide-container">
-
-                        {{ range where .Data.Pages "Section" "_event" }}
-                            {{ partial "event-preview.html" . }}
+                        {{ range sort (where .Data.Pages "Section" "_event") ".Params.datetime" }}
+                            {{ if .Params.datetime}}
+                                {{ partial "event-preview.html" . }}
+                            {{ end }}
                         {{ end }}
                     </div>
                 </div>
@@ -46,7 +47,8 @@
 </div>
 
 <div class="container outer">
-    <div class="container inner">
+    <!-- Todo: news section -->
+    <!--<div class="container inner">
         <section class="news">
             {{ range where .Data.Pages "Section" "_news" }}
                 <div class="col-md-6">
@@ -54,7 +56,7 @@
                 </div>
             {{ end }}
         </section>
-    </div>
+    </div>-->
     <div class="container inner">
         <section class="partners">
             <div class="heading col-md-12">
