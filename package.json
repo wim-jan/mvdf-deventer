@@ -38,7 +38,8 @@
     "susy": "^2.2.12",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "webpack-shell-plugin": "^0.5.0"
