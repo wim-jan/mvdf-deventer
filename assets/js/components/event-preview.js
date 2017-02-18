@@ -59,6 +59,8 @@ var EventPreview = {
     highlight: function(id) {
         if (this.currentEvent == id) return
         this.clearCurrentHighlights()
+
+        if (id === null) return
         var event = this.getEventById(id)
         if (!this.isInView(event)) {
             this.slideToEvent(event)

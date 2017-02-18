@@ -29,12 +29,18 @@
     "html-tag": "^0.2.1",
     "import-glob-loader": "^1.1.0",
     "node-sass": "^3.13.1",
+    "particler": "^0.1.2",
+    "particlesjs": "^1.0.2",
     "resolve-url-loader": "^1.6.1",
     "sass-loader": "^4.1.1",
+    "shelljs": "^0.7.6",
     "style-loader": "^0.13.1",
     "susy": "^2.2.12",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
+  },
+  "devDependencies": {
+    "webpack-shell-plugin": "^0.5.0"
   }
 }

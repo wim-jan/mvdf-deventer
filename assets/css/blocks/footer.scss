@@ -1,0 +1,73 @@
+.container.footer {
+    background: $purple;
+    background-image: url(/assets/img/mesh.png);
+    background-size: cover;
+    color: $white;
+    
+    .inner {
+        padding: 100px 0;
+    }
+
+    .col-md-4 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100px;
+
+        &:nth-child(1) {
+            justify-content: flex-start;
+            flex-flow: row wrap;
+
+            p {
+                width: 100%;
+            }
+        }
+
+        &:nth-child(2) {
+            justify-content: center;
+        }
+
+        &:nth-child(3) {
+            justify-content: flex-end;
+        }
+    }
+
+    .socials {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        li {
+            @include hexagon($white, 50px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            
+            &:first-child {
+                margin-left: 0;
+            }
+
+            a {
+                position: absolute;
+                font-size: 30px;
+                color: $red;
+
+                &:hover {
+                    color: $purple;
+                }
+            }
+        }
+    }
+
+    .all-credits-go-to-ilja-nienhaus {
+        display: block;
+        text-align: right;
+
+        a {
+            color: $white;
+        }
+    }
+}

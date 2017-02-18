@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractSass = new ExtractTextPlugin('all.css');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = {
   entry: {
@@ -21,7 +22,7 @@ module.exports = {
         loader: extractSass.extract(['css', 'sass', 'import-glob'])
       },
       {
-        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+        test: /\.woff2|\.ttf|\.eot|\.svg|\.woff/,
         loader: "file"
       },
       {
@@ -39,10 +40,13 @@ module.exports = {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }
     }),
+    new WebpackShellPlugin({
+      onBuildStart:['cp -r assets/img public/assets']
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
       comments: false,
-    }),
+    })
   ]
 };
 

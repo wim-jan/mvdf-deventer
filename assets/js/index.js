@@ -1,4 +1,5 @@
 import '../css/index.sass'
+import 'particler'
 
 var UID = {
 	_current: 0,
@@ -37,6 +38,8 @@ HTMLElement.prototype.pseudoStyle = function(element,prop,value){
 
 import eventPreview from './components/event-preview'
 import mapBox from './components/mapbox'
+import Footer from './components/footer'
 
 eventPreview.init()
 mapBox.init()
+var footer = new Footer();

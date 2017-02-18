@@ -1,9 +1,9 @@
 const webpack = require('webpack');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = {
   entry: {
-    all: __dirname + '/assets/js/index.js',
-
+    all: __dirname + '/assets/js/index.js'
   },
   resolve: {
     root: __dirname + '/assets/js',
@@ -19,7 +19,7 @@ module.exports = {
         loaders: ['style', 'css', 'sass', 'import-glob']
       },
       {
-        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+        test: /\.woff2|\.ttf|\.eot|\.svg|\.woff/,
         loader: "file"
       },
       {
@@ -38,10 +38,17 @@ module.exports = {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }
     }),
+    new WebpackShellPlugin({
+      onBuildStart:['cp -r assets/img public/assets']
+    })
   ],
   devServer: {
     port: 3000,
     inline: true,
     stats: 'minimal'
   },
+  node: {
+    fs: "empty",
+    child_process: "empty"
+  }
 };

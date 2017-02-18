@@ -1,0 +1,41 @@
+@function height($size) {
+    @return $size / sqrt(3);
+}
+
+@function offsetY($size) {
+    @return height($size) / 2;
+}
+
+@function offsetX($size) {
+    @return $size / 2;
+}
+
+@mixin hexagon($color, $size) {
+
+    position: relative;
+    width: $size; 
+    height: height($size);
+    background-color: $color;
+    margin: offsetY($size) 0;
+
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        border-left: offsetX($size) solid transparent;
+        border-right: offsetX($size) solid transparent;
+    }
+
+    &:before {
+        bottom: 100%;
+        border-bottom: offsetY($size) solid $color;
+    }
+
+    &:after {
+        top: 100%;
+        width: 0;
+        border-top: offsetY($size) solid $color;
+    }
+
+    @content;
+}
