@@ -1,5 +1,4 @@
 import '../css/index.sass'
-import 'particler'
 
 var UID = {
 	_current: 0,
@@ -42,4 +41,3 @@ import Footer from './components/footer'
 
 eventPreview.init()
 mapBox.init()
-var footer = new Footer();
