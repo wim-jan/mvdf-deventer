@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = {
   entry: {
