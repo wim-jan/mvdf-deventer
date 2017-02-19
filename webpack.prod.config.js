@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractSass = new ExtractTextPlugin('all.css');
-const WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = {
   entry: {
