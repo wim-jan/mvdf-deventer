@@ -40,9 +40,6 @@ module.exports = {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }
     }),
-    new WebpackShellPlugin({
-      onBuildStart:['cp -r assets/img public/assets']
-    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
       comments: false,
