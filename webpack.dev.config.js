@@ -19,8 +19,8 @@ module.exports = {
         loaders: ['style', 'css', 'sass', 'import-glob']
       },
       {
-        test: /\.woff2|\.ttf|\.eot|\.svg|\.woff/,
-        loader: "file"
+        test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
+        loader: 'file'
       },
       {
         test: /\.js$/,

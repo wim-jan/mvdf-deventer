@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: __dirname + '/public/assets',
     filename: '[name].js',
-    publicPath: '/assets',
+    publicPath: '/assets/',
   },
   module: {
     loaders: [
@@ -21,8 +21,8 @@ module.exports = {
         loader: extractSass.extract(['css', 'sass', 'import-glob'])
       },
       {
-        test: /\.woff2|\.ttf|\.eot|\.svg|\.woff/,
-        loader: "file"
+        test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
+        loader: 'file'
       },
       {
         test: /\.js$/,
