@@ -1,0 +1,17 @@
+<div class="container outer zigzag white">
+    <div class="container inner">
+        <section class="partners">
+            <div class="heading col-md-12">
+                <span>Onze Partners</span>
+                <hr>
+            </div>
+            <ul>
+                {{ range where .Data.Pages "Section" "partner" }}
+                    {{ if .Params.logo }}
+                       {{ partial "partner-preview.html" . }}
+                    {{ end }}
+                {{ end }}
+            </ul>
+        </section>
+    </div>
+</div>

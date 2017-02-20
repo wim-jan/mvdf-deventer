@@ -12,7 +12,7 @@
     "start:assets": "NODE_ENV=development webpack-dev-server --open --content-base public/ --config webpack.dev.config.js",
     "start:hugo": "hugo -w --config config.dev.toml",
     "start:datocms": "dato dump --watch",
-    "start:livereload": "livereload public -e 'html' -p 5678",
+    "start:livereload": "livereload public -e 'html' -p 5680",
     "start": "dato check && concurrently -p \"[{name}]\" -c \"blue,red,green,yellow\" -k -n hugo,webpack,livereload,dato \"npm run start:hugo\" \"npm run start:assets\" \"npm run start:livereload\" \"npm run start:datocms\"",
     "start:offline": "concurrently -p \"[{name}]\" -c \"blue,red,green,yellow\" -k -n hugo,webpack,livereload \"npm run start:hugo\" \"npm run start:assets\" \"npm run start:livereload\""
   },

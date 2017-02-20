@@ -1,0 +1,15 @@
+{{ partial "header.html" . }}
+
+<div class="container outer">
+    <div class="container inner">
+        {{ range sort (where .Data.Pages "Section" "event") ".Params.datetime" }}
+            {{ if .Params.datetime}}
+                {{ partial "event-preview.html" . }}
+            {{ end }}
+        {{ end }}
+    </div>
+</div>
+
+{{ partial "partners.html" . }}
+
+{{ partial "footer.html" . }}
