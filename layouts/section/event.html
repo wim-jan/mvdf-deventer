@@ -1,15 +1,29 @@
-{{ partial "header.html" . }}
+{{ partial "header.html" . }} 
 
-<div class="container outer">
-    <div class="container inner">
-        {{ range sort (where .Data.Pages "Section" "event") ".Params.datetime" }}
-            {{ if .Params.datetime}}
-                {{ partial "event-preview.html" . }}
-            {{ end }}
+{{ range $index, $element := sort (where .Data.Pages "Section" "event") ".Params.datetime" }} 
+    {{ if .Params.datetime}}
+
+        {{ if eq (mod $index 3) 0 }}
+            {{ $.Scratch.Set "class" "white"}}
+        {{ else }}
+            {{ $.Scratch.Set "class" "red"}}
+        {{ end}}
+
+        {{ if eq (mod $index 2) 0 }}
+            <div class="container outer event-listing {{ $.Scratch.Get "class" }}">
+                <div class="container inner"> 
         {{ end }}
-    </div>
-</div>
 
-{{ partial "partners.html" . }}
+        {{ partial "event-poster.html" . }}
+
+        {{ if eq (mod $index 2) 1 }}
+                </div>
+            </div>
+        {{ end }}
+
+    {{ end }} 
+{{ end }} 
+
+{{ partial "partners.html" . }} 
 
 {{ partial "footer.html" . }}

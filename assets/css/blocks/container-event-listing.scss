@@ -1,0 +1,14 @@
+.container.event-listing {
+    &.red {
+        @include zigzag($red, transparent) {
+            z-index: 100;
+        }
+        background: $red;
+    }
+    &.white {
+        @include zigzag($white, transparent) {
+            z-index: 100;
+        }
+        background: $white;
+    }
+}
