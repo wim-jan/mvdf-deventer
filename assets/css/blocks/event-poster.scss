@@ -14,7 +14,7 @@
                         @include transition(border-top .2s);
                     }
                 }
-                @include transition(background-color .2s);
+                @include transition(background-color .2s, transform .2s);
 
                 margin-top: 0;
                 color: $dark;
@@ -28,6 +28,7 @@
                 &:hover {
                     background-color: $purple;
                     color: $light;
+                    transform: scale(1.025);
 
                     &:before, &:after {
                         content: "";
