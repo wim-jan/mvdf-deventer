@@ -7,64 +7,10 @@
                 text-decoration: none;
                 background-color: transparent;
                 display: block;
-                margin-top: -60px;
-
-                &:hover {
-                    background-color: $silver-light;
-
-                    .hexagon i {
-                        color: $purple;
-                    }
-                }
             }
 
-            .poster {
-                background-size: cover;
-                background-repeat: no-repeat;
-                height: 400px;
-                background-position: center;
-                position: relative;
-
-                    .banner {
-                        color: $white;
-                        display: block;
-                        position: relative;
-                        width: calc(100% - 30px);
-                        background: rgba(0,0,0,.9);
-                        top: 275px;
-                        padding: 15px;
-
-                        h3 {
-                            font-size: 1.6rem;
-                            line-height: 2.5rem;
-                        }
-
-                        .speaker {
-                            font-size: 1.2rem;
-                        }
-                    }
-            }
-
-            &:nth-child(1) {
-                a {
-                    margin-left: -15px;
-                }
-                .poster {
-                    &:after {
-                        content: '';
-                        border-right: 1px solid $silver;
-                        position: absolute;
-                        height: 450px;
-                        top: 0;
-                        right: -15px;
-                    }
-                }
-            }
-
-            &:nth-child(2) {
-                a {
-                    margin-right: 15px;
-                }
+            .hexagon {
+                @include hexagon-mask(200px);
             }
             
             p {
@@ -86,34 +32,6 @@
                 i {
                     color: $black;
                 }
-            }
-        }
-    }
-
-    &.white {
-        .hexagon {
-            @include hexagon($silver-dark, 30px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-        }
-    }
-
-    &.red {
-        .hexagon {
-            @include hexagon($silver-dark, 30px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-        }
-
-        a {
-            color: $light !important;
-
-            &:hover {
-                background-color: $red-dark !important;
             }
         }
     }

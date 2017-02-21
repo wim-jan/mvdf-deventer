@@ -1,16 +1,14 @@
 <div class="event poster col-md-6" data-coordinates='[ {{ .Params.location.latitude }}, {{ .Params.location.longitude }} ]' data-id="{{ .Params.id }}">
     <div class="inner">
         <a href="#{{ lower .Title | replaceRE "\\s+" "-" | replaceRE "^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}" data-event-id="{{ .Params.id }}">
-            <div class="poster" style="background-image: url({{ .Params.photo.url }})">
-                <span class="banner">
-                    <h3>{{ .Title }}</h3>
-                    <span class="speaker">Joke J. Hermsen</span>
-                </span>
+            <div class="hexagon" style="background-image: url({{ .Params.photo.url }})">
+                <div class="hextop"></div>
+                <div class="hexbottom"></div>
             </div>
+            <h3>{{ .Title }}</h3>
+            <span class="speaker">Joke J. Hermsen</span>
             <div class="details-small">
                 <span class="date"><span class="hexagon"><i class="fa fa-calendar-o"></i></span>{{ .Params.datetime | dateFormat "2" }} april - 2017</span>
-                <!--<span class="location"><span class="hexagon"><i class="fa fa-map-marker"></i></span></span>
-                <span class="price"><span class="hexagon"><i class="fa fa-money"></i></span></span>-->
             </div>
             <p>
                 {{ .Params.introduction }}

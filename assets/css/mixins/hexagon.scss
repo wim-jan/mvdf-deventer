@@ -1,5 +1,25 @@
+@function scaleFactor($size) {
+    @return tan(30 * pi() / 180);
+}
+
+@function scaleFactorDivided($size, $divide) {
+    @return $divide / scaleFactor($size);
+}
+
 @function height($size) {
     @return $size / sqrt(3);
+}
+
+@function heightDivided($size, $divide) {
+    @return height($size) / $divide;
+}
+
+@function heightBackground($size) {
+    @return height($size) * 2;
+}
+
+@function capWidth($size) {
+    @return $size / sqrt(2);
 }
 
 @function offsetY($size) {
@@ -8,6 +28,14 @@
 
 @function offsetX($size) {
     @return $size / 2;
+}
+
+@function offset($size) {
+    @return $size / sqrt(2) / 2;
+}
+
+@function left($size) {
+    @return ($size - capWidth($size)) / 2
 }
 
 @mixin hexagon($color, $size) {
@@ -38,4 +66,64 @@
     }
 
     @content;
+}
+
+@mixin hexagon-mask($size) {
+    position: relative;
+    width: $size; 
+    height: height($size);
+    margin: offsetY($size) 0;
+    background-size: auto heightBackground($size);
+    background-position: center;
+
+    .hextop,
+    .hexbottom {
+        position: absolute;
+        z-index: 1;
+        width: capWidth($size);
+        height: capWidth($size);
+        overflow: hidden;
+        transform: scaleY(scaleFactor($size)) rotate(-45deg);
+        background: inherit;
+        left: left($size);
+    }
+
+    /*counter transform the bg image on the caps*/
+    .hextop:after,
+    .hexbottom:after {
+        content: "";
+        position: absolute;
+        width: $size;
+        height: height($size);
+        transform:          rotate(45deg) scaleY(scaleFactorDivided($size, 1)) translateY(-#{heightDivided($size, 2)});
+        transform-origin: 0 0;
+        background: inherit;
+    }
+
+    .hextop {
+        top: -#{offset($size)};
+    }
+
+    .hextop:after {
+        background-position: center top;
+    }
+
+    .hexbottom {
+        bottom: -#{offset($size)};
+    }
+
+    .hexbottom:after {
+        background-position: center bottom;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0.0000px;
+        left: 0;
+        width: $size;
+        height: height($size);
+        z-index: 2;
+        background: inherit;
+    }
 }
