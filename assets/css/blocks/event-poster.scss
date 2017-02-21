@@ -1,7 +1,14 @@
 .container.event-listing {
-    .event {
 
+    .event {
         &.poster {
+            width: 410px;
+            margin-top: -100px;
+
+            &:first-child {
+                margin-right: 95px;
+            }
+
             a {
                 @include hexagon($silver-light, 400px) {
                     &:before, &:after {
@@ -20,10 +27,6 @@
                 color: $dark;
                 text-decoration: none;
                 display: block;
-
-                &:first-child {
-                    margin-right: 100px;
-                }
 
                 &:hover {
                     background-color: $purple;
@@ -59,11 +62,24 @@
             }
 
             section {
+                position: relative;
+                z-index: 100;
                 width: 400px;
-                margin-top: -200px;
+                margin-top: -220px;
                 text-align: left;
 
-                .details-small, h3, .speaker {
+                .hexagon {
+                    @include hexagon($silver-dark, 30px);
+                    display: flex;
+                    justify-content: center;
+                    margin-right: 10px;
+
+                    i {
+                        color: $silver-light;
+                    }
+                }
+
+                .date, h3, .speaker {
                     margin-left: 190px;
                 }
 
@@ -76,7 +92,7 @@
             .details, .details-small {
 
                 &.details-small {
-                    margin: 15px 30px 0;
+                    margin: 15px 30px 0 190px;
                 }
 
                 &>span {
@@ -88,6 +104,29 @@
                 i {
                     color: $black;
                 }
+            }
+        }
+    }
+
+    &.right {
+        .image {
+            left: 210px !important;
+        }
+
+        section {
+            margin-top: -180px !important;
+            
+            h3, .speaker {
+                margin-left: 30px !important;
+            }
+            
+            .details-small {
+                margin: 15px 30px 0 30px !important;
+            }
+
+            p {
+                direction: rtl;
+                text-align: left;
             }
         }
     }
