@@ -13,7 +13,8 @@ var EventPreview = {
         this.eventColumn = document.querySelector('.events.col-md-8')
         this.eventSlider = document.querySelector('.event-slider')
         this.sliderContainer = document.querySelector('.event-slider .slide-container')
-        if (!this.zigzags) return;
+        if (!this.zigzags.length) return;
+        console.log(this.zigzags)
 
         this.attachListeners()
         setTimeout(() => {

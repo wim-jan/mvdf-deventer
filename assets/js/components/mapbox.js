@@ -9,7 +9,7 @@ var MapBox = {
     
     init: function() {
 
-        if (typeof(L) === 'undefined') return
+        if (typeof(L) === 'undefined' || !document.querySelector('#map-container')) return
 
         L.mapbox.accessToken = this.apiToken
         
