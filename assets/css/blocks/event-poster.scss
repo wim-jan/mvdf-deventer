@@ -1,20 +1,75 @@
 .container.event-listing {
     .event {
+
         &.poster {
             a {
+                @include hexagon($silver-light, 400px) {
+                    &:before, &:after {
+                        @include transition(border-left .2s, border-right .2s);
+                    }
+                    &:before {
+                        @include transition(border-bottom .2s);
+                    }
+                    &:after {
+                        @include transition(border-top .2s);
+                    }
+                }
                 @include transition(background-color .2s);
+
+                margin-top: 0;
                 color: $dark;
                 text-decoration: none;
-                background-color: transparent;
                 display: block;
+
+                &:first-child {
+                    margin-right: 100px;
+                }
+
+                &:hover {
+                    background-color: $purple;
+                    color: $light;
+
+                    &:before, &:after {
+                        content: "";
+                        position: absolute;
+                        width: 0;
+                        border-left: offsetX(400px) solid transparent;
+                        border-right: offsetX(400px) solid transparent;
+                    }
+
+                    &:before {
+                        bottom: 100%;
+                        border-bottom: offsetY(400px) solid $purple;
+                    }
+
+                    &:after {
+                        top: 100%;
+                        width: 0;
+                        border-top: offsetY(400px) solid $purple;
+                    }
+                }
+
             }
 
-            .hexagon {
+            .image {
                 @include hexagon-mask(200px);
+                top: -60px;
+                left: -20px;
             }
-            
-            p {
-                padding: 30px;
+
+            section {
+                width: 400px;
+                margin-top: -200px;
+                text-align: left;
+
+                .details-small, h3, .speaker {
+                    margin-left: 190px;
+                }
+
+                p {
+                    padding: 30px;
+                    text-indent: 100px;
+                }
             }
 
             .details, .details-small {

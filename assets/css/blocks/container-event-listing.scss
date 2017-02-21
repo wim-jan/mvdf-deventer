@@ -1,14 +1,24 @@
 .container.event-listing {
-    &.red {
-        @include zigzag($red, transparent) {
-            z-index: 100;
-        }
-        background: $red;
+    &>.inner {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        padding-left: 30px;
     }
-    &.white {
-        @include zigzag($white, transparent) {
-            z-index: 100;
+
+    &.first {
+        padding-top: 120px;
+    }
+
+    &.left {
+        .inner {
+            justify-content: flex-start;
         }
-        background: $white;
+    }
+
+    &.right {
+        .inner {
+            justify-content: flex-end;
+        }
     }
 }

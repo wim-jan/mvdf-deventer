@@ -1,18 +1,21 @@
-<div class="event poster col-md-6" data-coordinates='[ {{ .Params.location.latitude }}, {{ .Params.location.longitude }} ]' data-id="{{ .Params.id }}">
+<div class="event poster" data-coordinates='[ {{ .Params.location.latitude }}, {{ .Params.location.longitude }} ]' data-id="{{ .Params.id }}">
     <div class="inner">
         <a href="#{{ lower .Title | replaceRE "\\s+" "-" | replaceRE "^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}" data-event-id="{{ .Params.id }}">
-            <div class="hexagon" style="background-image: url({{ .Params.photo.url }})">
+            <div class="image" style="background-image: url({{ .Params.photo.url }})">
                 <div class="hextop"></div>
                 <div class="hexbottom"></div>
             </div>
-            <h3>{{ .Title }}</h3>
-            <span class="speaker">Joke J. Hermsen</span>
-            <div class="details-small">
-                <span class="date"><span class="hexagon"><i class="fa fa-calendar-o"></i></span>{{ .Params.datetime | dateFormat "2" }} april - 2017</span>
-            </div>
-            <p>
-                {{ .Params.introduction }}
-            </p>
+            <section>
+                <div class="details-small">
+                    <span class="date"><span class="hexagon"><i class="fa fa-calendar-o"></i></span>{{ .Params.datetime | dateFormat "2" }} april</span>
+                </div>
+                <h3>{{ .Title }}</h3>
+                <span class="speaker">Joke J. Hermsen</span>
+                
+                <p>
+                    {{ .Params.introduction }}
+                </p>
+            </section>
         </a>
     </div>
 </div>

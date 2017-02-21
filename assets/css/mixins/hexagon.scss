@@ -35,7 +35,7 @@
 }
 
 @function left($size) {
-    @return ($size - capWidth($size)) / 2
+    @return ($size - capWidth($size)) / 2;
 }
 
 @mixin hexagon($color, $size) {

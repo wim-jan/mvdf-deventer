@@ -4,13 +4,13 @@
     {{ if .Params.datetime}}
 
         {{ if eq (mod $index 3) 0 }}
-            {{ $.Scratch.Set "class" "white"}}
+            {{ $.Scratch.Set "class" "left"}}
         {{ else }}
-            {{ $.Scratch.Set "class" "red"}}
+            {{ $.Scratch.Set "class" "right"}}
         {{ end}}
 
         {{ if eq (mod $index 2) 0 }}
-            <div class="container outer event-listing {{ $.Scratch.Get "class" }}">
+            <div class="container outer event-listing {{ $.Scratch.Get "class" }} {{ if eq $index 0 }}first{{ end }}">
                 <div class="container inner"> 
         {{ end }}
 
