@@ -1,5 +1,7 @@
 {{ partial "header.html" . }} 
 
+<div class="overlay hide-and-seek"></div>
+
 {{ range $index, $element := sort (where .Data.Pages "Section" "event") ".Params.datetime" }} 
     {{ if .Params.datetime}}
 

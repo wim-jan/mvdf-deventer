@@ -1,3 +1,5 @@
+"use strict";
+
 import '../css/index.sass'
 
 var UID = {

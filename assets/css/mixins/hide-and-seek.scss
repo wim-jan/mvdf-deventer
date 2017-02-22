@@ -1,0 +1,13 @@
+@mixin hide-and-seek() {
+    @include transition(opacity .5s);
+    display: none;
+    opacity: 0;
+
+    &.open {
+        display: block;
+    }
+
+    &.visible {
+        opacity: 1;
+    }
+}

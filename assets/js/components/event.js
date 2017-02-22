@@ -1,7 +1,11 @@
+import HideAndSeek from './hide-and-seek'
+
 class EventView {
 
     constructor() {
         this.events = document.querySelectorAll('.event.poster a');
+        this.event = null;
+        this.overlay = new HideAndSeek(document.querySelector('.overlay'));
         this.attatchEvents()
     }
 
@@ -12,16 +16,20 @@ class EventView {
                 self.openEvent(e.target);
             })
         });
+        document.querySelector('.overlay').addEventListener('click', () => {
+            self.collapseEvents();
+        })
     }
 
     collapseEvents() {
-        document.querySelectorAll('.container.event-listing.fold-out, .event.full.open, .container.event-listing.fold-out a.active').forEach((e) => {
+        document.querySelectorAll('.container.event-listing.fold-out, .container.event-listing.fold-out a.active').forEach((e) => {
             e.className = e.className
                 .replace('fold-out', '')
-                .replace('open', '')
-                .replace('visible', '')
                 .replace('active', '')
         });
+
+        this.overlay.close();
+        this.event.close();
     }
 
     openEvent(el) {
@@ -29,14 +37,18 @@ class EventView {
             id = anchor.href.match(/\#(.*)$/)[1],
             event = document.querySelector('[data-id="' + id + '"]'),
             container = el.closest('div.container.event-listing')
-        this.collapseEvents();
+        
+        this.event = new HideAndSeek(event)
 
-        event.className += ' open';
         container.className += ' fold-out';
         anchor.className += 'active';
 
         setTimeout(() => {
-            event.className += ' visible';
+            this.overlay.open();
+
+            setTimeout(() => {
+                this.event.open()
+            }, 1000)
         }, 500)
 
         this.slideToEvent(event)
