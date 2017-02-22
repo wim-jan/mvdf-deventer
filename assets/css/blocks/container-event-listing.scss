@@ -1,13 +1,17 @@
 .container.event-listing {
+    @include transition(height .2s);
+    height: calc(450px + 0vh);
+
     &>.inner {
         display: flex;
         align-content: center;
         align-items: center;
         padding-left: 30px;
+        position: relative;
     }
 
     &.first {
-        padding-top: 220px;
+        margin-top: 190px;
     }
 
     &.left {
@@ -20,5 +24,9 @@
         .inner {
             justify-content: flex-end;
         }
+    }
+
+    &.fold-out {
+        height: calc(450px + 100vh);
     }
 }

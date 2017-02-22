@@ -2,8 +2,10 @@
 
     .event {
         &.poster {
+            position: relative;
             width: 410px;
-            margin-top: -100px;
+            height: 450px;
+            margin-top: -80px;
 
             &:first-child {
                 margin-right: 95px;
@@ -28,7 +30,7 @@
                 text-decoration: none;
                 display: block;
 
-                &:hover {
+                &:hover, &.active {
                     background-color: $purple;
                     color: $light;
                     transform: scale(1.025);

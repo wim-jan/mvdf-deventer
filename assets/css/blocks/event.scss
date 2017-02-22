@@ -1,0 +1,21 @@
+.event {
+    &.full {
+        @include transition(opacity .5s);
+        display: none;
+        overflow: hidden;
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        top: 400px;
+        z-index: 200;
+        height: 90vh;
+
+        &.open {
+            display: block;
+        }
+
+        &.visible {
+            opacity: 1;
+        }
+    }
+}

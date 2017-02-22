@@ -1,6 +1,8 @@
+{{ $title := lower .Title | replaceRE "\\s+" "-" | replaceRE "^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
+
 <div class="event poster" data-coordinates='[ {{ .Params.location.latitude }}, {{ .Params.location.longitude }} ]' data-id="{{ .Params.id }}">
     <div class="inner">
-        <a href="#{{ lower .Title | replaceRE "\\s+" "-" | replaceRE "^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}" data-event-id="{{ .Params.id }}">
+        <a href="#{{ $title}}" data-event-id="{{ .Params.id }}">
             <div class="image" style="background-image: url({{ .Params.photo.url }})">
                 <div class="hextop"></div>
                 <div class="hexbottom"></div>
@@ -18,4 +20,8 @@
             </section>
         </a>
     </div>
+</div>
+<div class="event full" data-id="{{ $title }}">
+    <h1>{{ .Title }}</h1>
+    {{ .Params.content | markdownify }}
 </div>
