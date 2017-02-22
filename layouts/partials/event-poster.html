@@ -22,6 +22,11 @@
     </div>
 </div>
 <div class="event full" data-id="{{ $title }}">
-    <h1>{{ .Title }}</h1>
-    {{ .Params.content | markdownify }}
+    <a href="#"><i class="fa fa-close"></i></a>
+    <div class="content col-md-8">
+        <h1>{{ .Title }}</h1>
+        {{ .Params.content | markdownify }}
+    </div>
+    <div class="details col-md-4">
+    </div>
 </div>
