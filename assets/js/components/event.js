@@ -23,7 +23,7 @@ class EventView {
     }
 
     collapseEvents() {
-        document.querySelectorAll('.container.event-listing.fold-out, .container.event-listing.fold-out a.active').forEach((e) => {
+        document.querySelectorAll('.container.event-listing.fold-out, .container.event-listing a.active').forEach((e) => {
             e.className = e.className
                 .replace('fold-out', '')
                 .replace('active', '')
@@ -39,10 +39,9 @@ class EventView {
             id = anchor.href.match(/\#(.*)$/)[1],
             event = document.querySelector('[data-id="' + id + '"]'),
             container = el.closest('div.container.event-listing')
-        
+
         this.event = new HideAndSeek(event)
 
-        container.className += ' fold-out';
         anchor.className += 'active';
 
         setTimeout(() => {
@@ -55,7 +54,7 @@ class EventView {
 
         this.moveToLeft(el)
 
-        this.slideToEvent(event)
+        // this.doScrolling(container.getBoundingClientRect().top, 500)
     }
 
     moveToLeft(el) {
@@ -69,10 +68,26 @@ class EventView {
         obj.style.left = 0 - (orect.left - crect.left) + "px"
     }
 
-    slideToEvent(event) {
-        var rect = event.getBoundingClientRect(),
-            top = rect.top
-        console.log(top)
+    doScrolling(elementY, duration) { 
+        var startingY = window.pageYOffset  
+        var diff = elementY - startingY  
+        var start
+
+        // Bootstrap our animation - it will get called right before next frame shall be rendered.
+        window.requestAnimationFrame(function step(timestamp) {
+            if (!start) start = timestamp
+            // Elapsed miliseconds since start of scrolling.
+            var time = timestamp - start
+            // Get percent of completion in range [0, 1].
+            var percent = Math.min(time / duration, 1)
+
+            window.scrollTo(0, startingY + diff * percent)
+
+            // Proceed with animation as long as we wanted it to.
+            if (time < duration) {
+                window.requestAnimationFrame(step)
+            }
+        })
     }
 }
 

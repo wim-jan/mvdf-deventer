@@ -35,10 +35,6 @@
                 &:hover, &.active {
                     background-color: $purple;
                     color: $light;
-                    
-                    &:not(.active) {
-                        transform: scale(1.025);
-                    }
 
                     &.active {
                         z-index: 500;
