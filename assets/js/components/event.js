@@ -5,6 +5,7 @@ class EventView {
     constructor() {
         this.events = document.querySelectorAll('.event.poster a');
         this.event = null;
+        this.eventObject = null;
         this.overlay = new HideAndSeek(document.querySelector('.overlay'));
         this.attatchEvents()
     }
@@ -30,6 +31,7 @@ class EventView {
 
         this.overlay.close();
         this.event.close();
+        this.eventObject.style.left = 0;
     }
 
     openEvent(el) {
@@ -48,10 +50,23 @@ class EventView {
 
             setTimeout(() => {
                 this.event.open()
-            }, 1000)
-        }, 500)
+            }, 500)
+        }, 100)
+
+        this.moveToLeft(el)
 
         this.slideToEvent(event)
+    }
+
+    moveToLeft(el) {
+        var obj = el.closest('.event.poster'),
+            container = obj.closest('.bounding-box'),
+            crect = container.getBoundingClientRect(),
+            orect = obj.getBoundingClientRect()
+
+        this.eventObject = obj;
+
+        obj.style.left = 0 - (orect.left - crect.left) + "px"
     }
 
     slideToEvent(event) {

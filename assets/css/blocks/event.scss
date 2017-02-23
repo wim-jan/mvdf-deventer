@@ -8,13 +8,30 @@
         width: 100vw;
         transform: translateX(-50vw);
         left: 50%;
-        top: 270px;
+        top: 85px;
         z-index: 400;
         height: 90vh;
         background: $light;
 
         section {
             margin: 0 !important;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .details {
+                min-width: 430px;
+            }
+
+            .content {
+                h1 {
+                    margin-bottom: 15px;
+                }
+
+                p {
+                    margin-bottom: 15px;
+                }
+            }
         }
     }
 }

@@ -2,7 +2,9 @@
 
     .event {
         &.poster {
+            @include transition(left .2s);
             position: relative;
+            left: 0;
             width: 410px;
             height: 450px;
             margin-top: -80px;
@@ -33,7 +35,20 @@
                 &:hover, &.active {
                     background-color: $purple;
                     color: $light;
-                    transform: scale(1.025);
+                    
+                    &:not(.active) {
+                        transform: scale(1.025);
+                    }
+
+                    &.active {
+                        z-index: 500;
+                        .opaque {
+                            opacity: 0;
+                        }
+                        section {
+                            display: none;
+                        }
+                    }
 
                     &:before, &:after {
                         content: "";
@@ -58,17 +73,29 @@
             }
 
             .image {
-                @include hexagon-mask(200px);
-                top: -60px;
-                left: -20px;
+                @include hexagon-mask(360px); 
+                top: 10px;
+                left: 20px;
+
+                .opaque {
+                    background-color: rgba(0, 0, 0, 0.8);
+                    width: 300px;
+                    height: 300px;
+                    z-index: 500;
+                    position: absolute;
+                }
             }
 
             section {
-                position: relative;
+                position: absolute;
+                top: calc(100% - 116px);
                 z-index: 100;
-                width: 400px;
-                margin-top: -220px;
+                width: calc(100% - 40px);
                 text-align: left;
+                margin-left: 20px;
+                background: rgba(0,0,0,.8);
+                color: #fff;
+                padding: 15px;
 
                 .hexagon {
                     @include hexagon($silver-dark, 30px);
@@ -80,56 +107,30 @@
                         color: $silver-light;
                     }
                 }
-
-                .date, h3, .speaker {
-                    margin-left: 190px;
-                }
-
-                p {
-                    padding: 30px;
-                    text-indent: 100px;
-                }
-            }
-
-            .details, .details-small {
-
-                &.details-small {
-                    margin: 15px 30px 0 190px;
-                }
-
-                &>span {
-                    display: flex;
-                    align-items: center;
-                    margin: 2px 0;
-                }
-                
-                i {
-                    color: $black;
-                }
             }
         }
     }
 
     &.right {
         .image {
-            left: 210px !important;
+            // left: 210px !important;
         }
 
-        a>section {
-            margin-top: -180px !important;
+        // a>section {
+        //     margin-top: -180px !important;
             
-            h3, .speaker {
-                margin-left: 30px !important;
-            }
+        //     h3, .speaker {
+        //         margin-left: 30px !important;
+        //     }
             
-            .details-small {
-                margin: 15px 30px 0 30px !important;
-            }
+        //     .details-small {
+        //         margin: 15px 30px 0 30px !important;
+        //     }
 
-            p {
-                direction: rtl;
-                text-align: left;
-            }
-        }
+        //     p {
+        //         direction: rtl;
+        //         text-align: left;
+        //     }
+        // }
     }
 }
