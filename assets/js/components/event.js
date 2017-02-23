@@ -40,6 +40,8 @@ class EventView {
             event = document.querySelector('[data-id="' + id + '"]'),
             container = el.closest('div.container.event-listing')
 
+        console.log(anchor)
+
         this.event = new HideAndSeek(event)
 
         anchor.className += 'active';
@@ -49,8 +51,8 @@ class EventView {
 
             setTimeout(() => {
                 this.event.open()
-            }, 500)
-        }, 100)
+            })
+        })
 
         this.moveToLeft(el)
 

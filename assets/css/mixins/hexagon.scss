@@ -6,27 +6,35 @@
     @return $divide / scaleFactor($size);
 }
 
+@function width($size, $borderWidth: 0px) {
+    @return $size - ($borderWidth * 2);
+}
+
 @function height($size) {
-    @return $size / sqrt(3);
+    @return ($size / sqrt(3));
 }
 
 @function heightDivided($size, $divide) {
     @return height($size) / $divide;
 }
 
-@function heightBackground($size) {
-    @return height($size) * 2;
+@function hexTranslateY($size, $divide, $borderWidth: 0px) {
+    @return heightDivided($size, $divide) + borderOffset($borderWidth);
+}
+
+@function heightBackground($size, $borderWidth: 0px) {
+    @return height($size) * 2 - borderOffset($borderWidth) * 4;
 }
 
 @function capWidth($size) {
     @return $size / sqrt(2);
 }
 
-@function offsetY($size) {
-    @return height($size) / 2;
+@function hexOffsetY($size, $borderWidth: 0px) {
+    @return height($size) / 2 + borderOffset($borderWidth);
 }
 
-@function offsetX($size) {
+@function hexOffsetX($size) {
     @return $size / 2;
 }
 
@@ -34,47 +42,78 @@
     @return $size / sqrt(2) / 2;
 }
 
-@function left($size) {
-    @return ($size - capWidth($size)) / 2;
+@function left($size, $borderWidth: 0px) {
+    @return ($size - capWidth($size)) / 2 - $borderWidth;
 }
 
-@mixin hexagon($color, $size) {
+@function borderOffset($width) {
+    @return $width / sqrt(3);
+}
+
+@function borderWidth($width) {
+    @return $width * sqrt(2);
+}
+
+@function top($size, $borderWidth: 0px) {
+    @return $size - $borderWidth * 2;
+}
+
+// $scope.borderRuleTop = function(){
+//     if ($scope.hasBorder){
+//       var borderRule = '\n  border-top: solid '
+//         + ($scope.borderWidth * Math.sqrt(2)).toFixed(4) + "px "
+//         + $scope.borderColor + ";\n  "
+//         + 'border-right: solid '
+//         + ($scope.borderWidth * Math.sqrt(2)).toFixed(4) + "px "
+//         + $scope.borderColor + ";";
+//       return borderRule;
+//     } else {
+//       return;
+//     }
+//   }
+
+@mixin hexagon($color, $size, $border: 0px, $borderColor: transparent) {
 
     position: relative;
     width: $size; 
-    height: height($size);
+    height: #{height($size) - ($border * scaleFactor($size) * 2)};
     background-color: $color;
-    margin: offsetY($size) 0;
+    margin: hexOffsetY($size, $border) 0;
 
     &:before, &:after {
         content: "";
         position: absolute;
         width: 0;
-        border-left: offsetX($size) solid transparent;
-        border-right: offsetX($size) solid transparent;
+        border-left: hexOffsetX($size) solid transparent;
+        border-right: hexOffsetX($size) solid transparent;
     }
 
     &:before {
         bottom: 100%;
-        border-bottom: offsetY($size) solid $color;
+        border-bottom: hexOffsetY($size) solid $color;
     }
 
     &:after {
         top: 100%;
         width: 0;
-        border-top: offsetY($size) solid $color;
+        border-top: hexOffsetY($size) solid $color;
     }
 
     @content;
 }
 
-@mixin hexagon-mask($size) {
+@mixin hexagon-mask($size, $border: 0px, $borderColor: transparent) {
     position: relative;
     width: $size; 
-    height: height($size);
-    margin: offsetY($size) 0;
-    background-size: auto heightBackground($size);
+    height: #{height($size)- ($border* scaleFactor($size) * 2)};
+    margin: hexOffsetY($size, $border) 0;
+    background-size: auto heightBackground($size, $border);
     background-position: center;
+
+    @if $border != 0px {
+        border-left: $border solid $borderColor;
+        border-right: $border solid $borderColor;
+    }
 
     .hextop,
     .hexbottom {
@@ -95,13 +134,18 @@
         position: absolute;
         width: $size;
         height: height($size);
-        transform:          rotate(45deg) scaleY(scaleFactorDivided($size, 1)) translateY(-#{heightDivided($size, 2)});
+        transform:          rotate(45deg) scaleY(scaleFactorDivided($size, 1)) hexOffsetY(-#{hexTranslateY($size, 2)});
         transform-origin: 0 0;
         background: inherit;
     }
 
     .hextop {
         top: -#{offset($size)};
+
+        @if $border != 0px {
+            border-top: solid #{borderWidth($border)} $borderColor;
+            border-right: solid #{borderWidth($border)} $borderColor;
+        }
     }
 
     .hextop:after {
@@ -110,6 +154,11 @@
 
     .hexbottom {
         bottom: -#{offset($size)};
+
+        @if $border != 0px {
+            border-bottom: solid #{borderWidth($border)} $borderColor;
+            border-left: solid #{borderWidth($border)} $borderColor;
+        }
     }
 
     .hexbottom:after {
@@ -119,9 +168,9 @@
     &:after {
         content: "";
         position: absolute;
-        top: 0.0000px;
+        top: top($size, $border);
         left: 0;
-        width: $size;
+        width: width($size, $border);
         height: height($size);
         z-index: 2;
         background: inherit;

@@ -14,28 +14,13 @@
             }
 
             a {
-                @include hexagon($silver-light, 400px) {
-                    &:before, &:after {
-                        @include transition(border-left .2s, border-right .2s);
-                    }
-                    &:before {
-                        @include transition(border-bottom .2s);
-                    }
-                    &:after {
-                        @include transition(border-top .2s);
-                    }
-                }
-                @include transition(background-color .2s, transform .2s);
-
+                position: relative;
                 margin-top: 0;
                 color: $dark;
                 text-decoration: none;
                 display: block;
 
                 &:hover, &.active {
-                    background-color: $purple;
-                    color: $light;
-
                     &.active {
                         z-index: 500;
                         .opaque {
@@ -46,30 +31,81 @@
                         }
                     }
 
-                    &:before, &:after {
-                        content: "";
-                        position: absolute;
-                        width: 0;
-                        border-left: offsetX(400px) solid transparent;
-                        border-right: offsetX(400px) solid transparent;
-                    }
-
-                    &:before {
-                        bottom: 100%;
-                        border-bottom: offsetY(400px) solid $purple;
-                    }
-
-                    &:after {
-                        top: 100%;
-                        width: 0;
-                        border-top: offsetY(400px) solid $purple;
+                    .image, .hextop, .hexbottom {
+                        border-color: $red !important;
                     }
                 }
 
             }
 
             .image {
-                @include hexagon-mask(360px); 
+                @include transition(border-color .2s);
+                position: relative;
+                width: 400px; 
+                height: 230.94px;
+                margin: 115.47px 0;
+                background-size: auto 415.6922px;
+                background-position: center;
+                border-left: solid 20px $silver-light;
+                border-right: solid 20px $silver-light;
+                
+                .hextop,
+                .hexbottom {
+                    position: absolute;
+                    z-index: 1;
+                    width: 282.84px;
+                    height: 282.84px;
+                    overflow: hidden;
+                    transform: scaleY(0.5774) rotate(-45deg);
+                    background: inherit;
+                    left: 38.58px;
+                }
+
+                /*counter transform the bg image on the caps*/
+                .hextop:after,
+                .hexbottom:after {
+                    content: "";
+                    position: absolute;
+                    width: 360.0000px;
+                    height: 207.8460969082653px;
+                    transform:          rotate(45deg) scaleY(1.7321) translateY(-103.9230px);
+                    transform-origin: 0 0;
+                    background: inherit;
+                }
+
+                .hextop {
+                    @include transition(border-color .2s);
+                    top: -141.4214px;
+                    border-top: solid 28.2843px $silver-light;
+                    border-right: solid 28.2843px $silver-light;
+                }
+
+                .hextop:after {
+                    background-position: center top;
+                }
+
+                .hexbottom {
+                    @include transition(border-color .2s);
+                    bottom: -141.4214px;
+                    border-bottom: solid 28.2843px $silver-light;
+                    border-left: solid 28.2843px $silver-light;
+                }
+
+                .hexbottom:after {
+                    background-position: center bottom;
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 11.5470px;
+                    left: 0;
+                    width: 360.0000px;
+                    height: 207.8461px;
+                    z-index: 2;
+                    background: inherit;
+                }
+
                 top: 10px;
                 left: 20px;
 
@@ -84,11 +120,11 @@
 
             section {
                 position: absolute;
-                top: calc(100% - 116px);
+                top: calc(100% - 104px);
                 z-index: 100;
-                width: calc(100% - 40px);
+                width: calc(100% - 50px);
                 text-align: left;
-                margin-left: 20px;
+                margin-left: 40px;
                 background: rgba(0,0,0,.8);
                 color: #fff;
                 padding: 15px;
