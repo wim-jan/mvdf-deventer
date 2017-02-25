@@ -10,8 +10,13 @@
         left: 50%;
         top: 105px;
         z-index: 400;
-        height: 90vh;
+        min-height: 760px;
         background: $light;
+
+        .close-button {
+            @include close-button(50px, $silver-dark);
+            left: calc(100% - 50px);
+        }
 
         section {
             margin: 0 !important;
@@ -20,10 +25,53 @@
             justify-content: space-between;
 
             .details {
-                min-width: 460px;
+                min-width: 400px;
+                margin: 0 20px;
+                background: $silver-light;
+                padding: 300px 15px 0;
+                min-height: 100%;
+                position: absolute;
+
+                .button {
+                    margin: 15px auto;
+                }
+
+                hr {
+                    border-color: $silver-dark;
+                    margin: 30px 15px;
+                }
+
+                ul {
+                    li {
+                        display: flex;
+                        flex-direction: row;
+                        padding: 5px;
+
+                        .hexagon {
+                            @include hexagon($purple, 30px);
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: center;
+                            top: -5px;
+                            margin-right: 15px;
+
+                            i {
+                                color: $light;
+                            }
+                        }
+
+                        span:not([class]) {
+                            display: inline-block;
+                            width: 80px;
+                        }
+                    }
+                }
             }
 
             .content {
+                margin-left: 460px;
+                
                 h1 {
                     margin-bottom: 15px;
                 }

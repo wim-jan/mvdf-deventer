@@ -1,7 +1,9 @@
+{{ $title := lower .Title | replaceRE "\\s+" "-" | replaceRE "^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
+
 <div class="event preview" data-coordinates='[ {{ .Params.location.latitude }}, {{ .Params.location.longitude }} ]' data-id="{{ .Params.id }}">
     <hr>
     <div class="inner">
-        <a href="{{ .URL }}">
+        <a href="/programma/#{{ $title }}">
             <span class="date">
                 <span class="day">{{ .Params.datetime | dateFormat "2" }}</span>
                 april - 2017

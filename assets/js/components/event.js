@@ -8,6 +8,7 @@ class EventView {
         this.eventObject = null;
         this.overlay = new HideAndSeek(document.querySelector('.overlay'));
         this.attatchEvents()
+        this.checkForCurrentEvent()
     }
 
     attatchEvents() {
@@ -20,6 +21,20 @@ class EventView {
         document.querySelector('.overlay').addEventListener('click', () => {
             self.collapseEvents();
         })
+        document.querySelectorAll('.close-button').forEach((c) => {
+            c.addEventListener('click', (e) => {
+                self.collapseEvents()
+                e.preventDefault()
+                return false
+            })
+        })
+    }
+
+    checkForCurrentEvent() {
+        var hash = window.location.href.match(/#(.*)$/),
+            currentEvent = hash ? hash[1] : null
+
+        if (currentEvent) this.findEvent(currentEvent)
     }
 
     collapseEvents() {
@@ -34,13 +49,21 @@ class EventView {
         this.eventObject.style.left = 0;
     }
 
+    findEvent(id) {
+        var obj = document.querySelector('[data-event-id="' + id + '"]')
+        if (obj) {
+            setTimeout(() => {
+                obj.click()
+            }, 1000)
+        }
+    }
+
     openEvent(el) {
         var anchor = el.closest('a'),
             id = anchor.href.match(/\#(.*)$/)[1],
             event = document.querySelector('[data-id="' + id + '"]'),
-            container = el.closest('div.container.event-listing')
-
-        console.log(anchor)
+            container = el.closest('div.container.event-listing'),
+            btnClose = event.closest('.close-button')
 
         this.event = new HideAndSeek(event)
 
@@ -55,8 +78,6 @@ class EventView {
         })
 
         this.moveToLeft(el)
-
-        // this.doScrolling(container.getBoundingClientRect().top, 500)
     }
 
     moveToLeft(el) {

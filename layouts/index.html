@@ -29,7 +29,7 @@
             <div class="events col-md-8">
                 <div class="event-slider">
                     <div class="slide-container">
-                        {{ range sort (where .Data.Pages "Section" "event") ".Params.datetime" }}
+                        {{ range sort (where .Data.Pages "Section" "programma") ".Params.datetime" }}
                             {{ if .Params.datetime}}
                                 {{ partial "event-preview.html" . }}
                             {{ end }}

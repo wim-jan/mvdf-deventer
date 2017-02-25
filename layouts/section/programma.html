@@ -2,7 +2,7 @@
 
 <div class="overlay hide-and-seek"></div>
 
-{{ range $index, $element := sort (where .Data.Pages "Section" "event") ".Params.datetime" }} 
+{{ range $index, $element := sort (where .Data.Pages "Section" "programma") ".Params.datetime" }} 
     {{ if .Params.datetime}}
 
         {{ if eq (mod $index 3) 0 }}
