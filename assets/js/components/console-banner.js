@@ -12,12 +12,10 @@ class Banner {
 "                         ▓▄   ▓▓¬                       ▐▓▓▌           `     \n" +
 "                          ▀▀▀▀¬                      ▄█▀` ▓▌                 \n" +
 "                                                  ▄█▀    ▐▓                  \n" +
-"                                                ▄▓▀     ▄▓                   \n" +
-"                                                ▓▓▓▄▄▄▓▀└                    \n" +
+"           denken - designen - doen             ▄▓▀     ▄▓                   \n" +
+"                           ♥ desenzo.nl         ▓▓▓▄▄▄▓▀└                    \n" +
 "                                                 ^`▀▀`                       \n" +
-"                                                                             \n" +
-"         denken - designen - doen                                            \n" +
-"                          ♥ desenzo.nl                                       \n")
+"                                                                             \n")
     }
 }
 
