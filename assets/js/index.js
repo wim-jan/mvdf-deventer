@@ -40,7 +40,19 @@ HTMLElement.prototype.pseudoStyle = function(element,prop,value){
 import eventPreview from './components/event-preview'
 import mapBox from './components/mapbox'
 import EventView from './components/event'
+import Banner from './components/console-banner'
 
-eventPreview.init()
-mapBox.init()
-var eventView = new EventView()
+
+window.addEventListener('load', (e) => {
+	setTimeout(() => {
+		var body = document.querySelector('body')
+
+		document.querySelector('.container.loader').style.display = 'none'
+		body.className = body.className.replace('loading', '')
+		
+		var banner = new Banner()
+		eventPreview.init()
+		mapBox.init()
+		var eventView = new EventView()
+	}, 2000)
+})

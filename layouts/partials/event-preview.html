@@ -1,4 +1,4 @@
-{{ $title := lower .Title | replaceRE "\\s+" "-" | replaceRE "^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
+{{ $title := lower .Title | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
 
 <div class="event preview" data-coordinates='[ {{ .Params.location.latitude }}, {{ .Params.location.longitude }} ]' data-id="{{ .Params.id }}">
     <hr>

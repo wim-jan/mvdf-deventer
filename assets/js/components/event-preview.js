@@ -14,7 +14,6 @@ var EventPreview = {
         this.eventSlider = document.querySelector('.event-slider')
         this.sliderContainer = document.querySelector('.event-slider .slide-container')
         if (!this.zigzags.length) return;
-        console.log(this.zigzags)
 
         this.attachListeners()
         setTimeout(() => {

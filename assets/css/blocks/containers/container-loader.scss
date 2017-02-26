@@ -1,0 +1,19 @@
+.container.loader {
+    position: absolute;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: $light;
+    z-index: 1000;
+
+    span:not([class]) {
+        position: absolute;
+        top: calc(50% + 30px);
+        left: 50%;
+        font-size: 20px;
+        display: block;
+        transform-origin: center center;
+    }
+}

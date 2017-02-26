@@ -129,7 +129,7 @@
 
     /*counter transform the bg image on the caps*/
     .hextop:after,
-    .hexbottom:after {
+    .hexbottom:after {  
         content: "";
         position: absolute;
         width: $size;

@@ -4,6 +4,9 @@ class EventView {
 
     constructor() {
         this.events = document.querySelectorAll('.event.poster a');
+
+        if (!this.events || this.events.length < 1) return;
+
         this.event = null;
         this.eventObject = null;
         this.overlay = new HideAndSeek(document.querySelector('.overlay'));
@@ -62,8 +65,7 @@ class EventView {
         var anchor = el.closest('a'),
             id = anchor.href.match(/\#(.*)$/)[1],
             event = document.querySelector('[data-id="' + id + '"]'),
-            container = el.closest('div.container.event-listing'),
-            btnClose = event.closest('.close-button')
+            container = el.closest('div.container.event-listing')
 
         this.event = new HideAndSeek(event)
 
