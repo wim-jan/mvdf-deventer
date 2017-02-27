@@ -32,7 +32,9 @@
             </div>
             <div class="content">
                 <h1>{{ .Title }}</h1>
-                {{ .Params.content | markdownify }}
+                <p>
+                    {{ .Params.content | markdownify }}
+                </p>
             </div>
         </section>
     </div>
