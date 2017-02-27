@@ -86,6 +86,7 @@
         width: 0;
         border-left: hexOffsetX($size) solid transparent;
         border-right: hexOffsetX($size) solid transparent;
+        left: 0px;
     }
 
     &:before {

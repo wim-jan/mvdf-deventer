@@ -23,6 +23,10 @@ section.partners {
             top: 50%;
             margin: 0;
             background-color: $silver;
+
+            @include firefox-only() {
+                transform: translateX(-50%);
+            }
         }
     }
 

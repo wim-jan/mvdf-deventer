@@ -1,0 +1,18 @@
+@mixin chrome-only() {
+    @media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm)
+    {
+        @content;
+    }
+}
+
+@mixin safari-only() {
+    &:not(:root:root){ 
+        @content;
+    }
+}
+
+@mixin firefox-only() {
+    @-moz-document url-prefix() { 
+        @content;
+    }
+}
