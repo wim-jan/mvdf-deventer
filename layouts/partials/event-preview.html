@@ -15,7 +15,7 @@
                 </span>
             </div>
             <p>
-                {{ .Params.introduction }}
+                {{ .Params.introduction | markdownify }}
             </p>
         </a>
     </div>

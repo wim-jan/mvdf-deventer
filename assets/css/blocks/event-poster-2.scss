@@ -6,13 +6,13 @@
         }
 
         &:nth-child(odd) {
-            .image {
+            a.image {
                 margin-left: 0px;
             }
         }
 
         &:nth-child(even) {
-            .image {
+            a.image {
                 margin-left: 190px !important;
             }
         }
@@ -26,10 +26,6 @@
             width: 410px;
             height: 310px;
             margin-top: -80px;
-
-            &:first-child {
-                margin-right: 95px;
-            }
 
             a {
                 position: relative;
@@ -56,8 +52,44 @@
 
             }
 
+            .inner {
+                position: relative;
+                margin-left: 40px;
+            }
+
             .image {
                 @include hexagon-mask(300px);
+            }
+
+            .hexagon {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 200;
+
+                &.date {
+                    @include hexagon($purple, 100px);
+                    left: -20px;
+                    top: -98px;
+
+                    span {
+                        @include default();
+                        font-size: 3rem;
+                        color: $white;
+                    }
+                }
+                &.category {
+                    @include hexagon(rgba(0, 0, 0, .8), 50px);
+                    top: -242px;
+                    left: 30px;
+
+
+                    i {
+                        font-size: 1.5rem;
+                        color: $white;
+                    }
+                }
             }
 
             section {

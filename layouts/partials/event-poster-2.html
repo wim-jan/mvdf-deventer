@@ -3,10 +3,16 @@
 <div class="container inner">
     <div class="event poster-2" data-coordinates='[ {{ .Params.location.latitude }}, {{ .Params.location.longitude }} ]' data-id="{{ .Params.id }}">
         <div class="inner">
-            <a href="#{{ $title}}" data-event-id="{{ $title }}">
+            <a href="#{{ $title}}" data-event-id="{{ $title }}" class="image">
                 <div class="image" style="background-image: url({{ .Params.photo.url }})">
                     <div class="hextop"></div>
                     <div class="hexbottom"></div>
+                </div>
+                <div class="date hexagon">
+                    <span>{{ .Params.datetime | dateFormat "2" }}</span>
+                </div>
+                <div class="category hexagon">
+                    <i class="fa fa-graduation-cap"></i>
                 </div>
             </a>
         </div>
