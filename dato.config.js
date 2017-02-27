@@ -11,6 +11,7 @@ module.exports = (dato, root, i18n) => {
 
   root.createDataFile('site.yaml', 'yaml', dato.site.toMap());
 
+  // Gather data for single instance types and store as a date file
   root.directory('./data', dir => {
     dato.singleInstanceItemTypes.forEach(itemType => {
       const item = dato.itemsOfType(itemType) ? dato.itemsOfType(itemType)[0] : null;
@@ -20,15 +21,24 @@ module.exports = (dato, root, i18n) => {
     });
   });
 
+  // Gather data with children and store as pages
   dato.collectionItemTypes.forEach(itemType => {
     root.directory(`./content/${itemType.apiKey}/`, dir => {
       if (dato.itemsOfType(itemType)) {
         dato.itemsOfType(itemType).forEach(item => {
-          if (item.title) {
-            dir.createPost(`${slugify(item.title)}.md`, 'yaml', { frontmatter: item.toMap() });
+          if (item.title || item.name) {
+            dir.createPost(`${slugify(item.title || item.name)}.md`, 'yaml', { frontmatter: item.toMap(), content: item.content });
           }
         });
       }
     });
+  });
+
+  root.createPost(`content/deventer.md`, 'yaml', {
+    frontmatter: {
+      title: dato.deventer.title,
+      introduction: dato.deventer.introduction
+    },
+    content: dato.deventer.content
   });
 };

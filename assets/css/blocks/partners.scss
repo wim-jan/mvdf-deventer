@@ -25,4 +25,32 @@ section.partners {
             background-color: $silver;
         }
     }
+
+    ul {
+        display: flex;
+        overflow: hidden;
+        justify-content: center;
+
+        li {
+            display: flex;
+            width: 25%;
+            flex-shrink: 0;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            img {
+                @include transition(filter .2s);
+                filter: grayscale(100%);
+            }
+
+            a {
+                &:hover {
+                    img {
+                        filter: grayscale(0%);
+                    }
+                }
+            }
+        }
+    }
 }

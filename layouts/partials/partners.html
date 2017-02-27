@@ -5,8 +5,13 @@
                 <span>Onze Partners</span>
                 <hr>
             </div>
-            <ul>
-            </ul>
+            <div class="col-md-12">
+                <ul>
+                {{ range where .Data.Pages "Section" "partner" }}
+                    <li><a href="{{ .Params.externalLink }}"><img src="{{ .Params.logo.url }}&w=200" /></a></li>
+                {{ end }}
+                </ul>
+            </div>
         </section>
     </div>
 </div>

@@ -1,17 +1,27 @@
 {{ partial "header.html" . }}
 
-<article class="sheet">
-  <div class="sheet__inner">
-    <h1 class="sheet__title">{{ .Title }}</h1>
-    <p class="sheet__lead">{{ .Params.excerpt }}</p>
-    <div class="sheet__gallery">
-      <img src="{{ .Params.photo }}" />
+<div class="container outer poster" style="background-image: url({{ .Params.photo.url }})">
+    <div class="container inner">
+        <section class="intro">
+            <div class="col-md-offset-6 col-md-6">
+                <h1>{{ .Title }}</h1>
+                <p class="introduction">
+                    {{ .Params.introduction | markdownify }}
+                </p>
+            </div>
+        </section>
     </div>
-    <div class="sheet__body">
-      {{ .Content }}
+</div>
+
+<div class="container outer">
+    <div class="container inner">
+        <section>
+            {{ .Content }}
+        </section>
     </div>
-  </div>
-</article>
+</div>
+
+{{ partial "partners.html" . }}
 
 {{ partial "footer.html" . }}
 
