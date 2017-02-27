@@ -1,6 +1,7 @@
 .container.outer.home {
     section.header {
         display: flex;
+        flex-wrap: wrap;
 
         .col-md-4 {
             display: flex;

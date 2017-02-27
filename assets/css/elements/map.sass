@@ -1,12 +1,15 @@
 #map-container
-    width: 100%
-    height: 450px
+    display: none
 
-    .mvdf-deventer-marker
-        svg
-            path
-                @include transition(fill .2s)
-                fill: $red
-        &:hover, &.active
-            path
-                fill: $purple
+    @include mq(tablet)
+        width: 100%
+        height: 450px
+
+        .mvdf-deventer-marker
+            svg
+                path
+                    @include transition(fill .2s)
+                    fill: $red
+            &:hover, &.active
+                path
+                    fill: $purple

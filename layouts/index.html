@@ -3,10 +3,10 @@
 <div class="container outer home">
     <div class="container inner">
         <section class="header">
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-12">
                 <img src="/img/logo.png" alt="Maand van de Filosofie Deventer" />
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 col-xs-12">
                 <h1>{{ .Site.Data.index.title }}</h1>
                 <h2>{{ .Site.Data.index.subtitle }}</h2>
                 <p>
@@ -20,13 +20,13 @@
 <div class="container outer events">
     <div class="container inner">
         <section>
-            <div class="deventer col-md-4">
+            <div class="deventer col-md-4 col-xs-12">
                 <h2>{{ .Site.Data.deventer.title }}</h2>
                 <p>
                     {{ .Site.Data.deventer.introduction | markdownify }}
                 </p>
             </div>
-            <div class="events col-md-8">
+            <div class="events col-md-8 col-xs-12">
                 <div class="event-slider">
                     <div class="slide-container">
                         {{ range sort (where .Data.Pages "Section" "programma") ".Params.datetime" }}

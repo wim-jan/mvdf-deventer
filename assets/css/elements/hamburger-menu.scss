@@ -1,0 +1,81 @@
+@mixin hamburger-menu($size) {
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    right: 0;
+    margin: 15px;
+    padding: 0;
+    width: $size;
+    height: $size;
+    font-size: 0;
+    text-indent: -9999px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+    border: none;
+    cursor: pointer;
+    border: 1px solid $red;
+
+    &:focus {
+        outline: none;
+    }
+
+    span {
+        @include transition(background 0s .3s);
+        display: block;
+        position: absolute;
+        top: $size / 2.19;
+        left: $size / 5;
+        right: $size / 5;
+        height: $size / 18;
+        background: $red;
+
+        &:before,
+        &:after {
+            @include transition-duration(.3s, .3s);
+            @include transition-delay(.3s, 0s);
+            position: absolute;
+            display: block;
+            left: 0;
+            width: 100%;
+            height: $size / 18;
+            background-color: $red;
+            content: "";
+        }
+
+        &:before {
+            @include transition-property(top, transform, background-color);
+            top: -$size / 4.8;
+        }
+
+        &:after {
+            @include transition-property(bottom, transform, background-color);
+            bottom: -$size / 4.8;
+        }
+    }
+    
+    /* active state, i.e. menu open */
+    &.active, &:active {
+        background-color: $red;
+
+        span {
+            background: none;
+
+            &:before {
+              top: 0;
+              transform: rotate(45deg);
+              background-color: $white;
+            }
+
+            &:after {
+              bottom: 0;
+              transform: rotate(-45deg);
+              background-color: $white;
+            }
+
+            &:before, &:after {
+                @include transition-delay(0s, .3s)
+            }
+        }
+    }
+}

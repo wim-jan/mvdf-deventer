@@ -1,36 +1,42 @@
+.hamburger
+    @include hamburger-menu(50px)
+
 header
-    @include default()
-    @include zigzag($red, transparent)
-        z-index: 100
-        
-    position: relative
-    display: block
-    background-color: $red
+    display: none
 
-    nav
-        display: flex
+    @include mq(tablet)
+        @include default()
+        @include zigzag($red, transparent)
+            z-index: 100
+            
+        position: relative
+        display: block
+        background-color: $red
 
-        ul
+        nav
             display: flex
-            margin: 60px 60px 40px
 
-            li
+            ul
                 display: flex
-                margin-right: 30px
+                margin: 60px 60px 40px
 
-                &:last-child
-                    margin-right: 0
-                
-                a
-                    @include transition(border .3s)
-                    text-transform: uppercase
-                    display: block
-                    color: $light
-                    border-bottom: 2px solid $red
+                li
+                    display: flex
+                    margin-right: 30px
 
-                    &:hover
+                    &:last-child
+                        margin-right: 0
+                    
+                    a
+                        @include transition(border .3s)
+                        text-transform: uppercase
+                        display: block
                         color: $light
-                        text-decoration: none
-                        border-bottom: 2px solid $purple
+                        border-bottom: 2px solid $red
+
+                        &:hover
+                            color: $light
+                            text-decoration: none
+                            border-bottom: 2px solid $purple
                         
 

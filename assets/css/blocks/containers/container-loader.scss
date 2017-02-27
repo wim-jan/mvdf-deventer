@@ -1,6 +1,6 @@
 .container.loader {
     position: absolute;
-    display: block;
+    display: none;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -15,5 +15,9 @@
         font-size: 20px;
         display: block;
         transform-origin: center center;
+    }
+
+    @if ($show-loader == true) {
+        display: block;
     }
 }
