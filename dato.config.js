@@ -47,6 +47,7 @@ module.exports = (dato, root, i18n) => {
   root.createPost(`content/contact/_index.md`, 'yaml', {
     frontmatter: {
       title: dato.contact.title,
+      firstContent: dato.contact.firstContent,
       secondContent: dato.contact.secondContent,
       itemType: 'contact'
     },
