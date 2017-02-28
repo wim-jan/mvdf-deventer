@@ -1,0 +1,23 @@
+{{ partial "header.html" . }}
+
+<div class="container outer partners">
+    {{ range (where .Data.Pages "Section" "partner") }}
+        <div class="container inner">
+            <div class="col-md-4">
+                <img src="{{ .Params.logo.url }}">
+            </div>
+            <div class="col-md-8">
+                <h1>{{ .Params.name }}</h1>
+                <p>
+                    {{ .Content }}
+                </p>
+                <a href="{{ .Params.externalLink }}" class="button red fluid" target="_blank"><i class="fa fa-external-link"></i>Ga naar de website van {{ .Params.name }}</a>
+            </div>
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+    {{ end }}
+</div>
+
+{{ partial "footer.html" . }}

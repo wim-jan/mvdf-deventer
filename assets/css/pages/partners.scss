@@ -1,0 +1,36 @@
+.container {
+    &.partners {
+        .button {
+            display: inline-block;
+            width: auto;
+            height: 54px;
+            margin-top: 30px;
+            padding: 15px 15px 15px 55px;
+        }
+
+        .container.inner {
+
+            hr {
+                margin: 100px 0 40px;
+            }
+
+            h1 {
+                line-height: 6rem;
+            }
+
+            h2 {
+                line-height: 4rem;
+            }
+
+            img {
+                margin-top: 50px;
+            }
+
+            &:last-child {
+                hr {
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -1,9 +1,9 @@
 .event
     &.preview
-        @include transition(transform .1s, background-color .1s)
+        @include transition(background-color .1s)
         background-color: $red
-        transform: scale(1)
-        height: calc(100% - 20px)
+        transform: scale(.95)
+        height: calc(100% + 2px)
         width: 300px
         float: left
         padding: 30px 15px 0
@@ -23,7 +23,7 @@
         &:hover, &.highlight
             @include box-shadow(0 0 10px -4px black)
             background-color: $purple
-            transform: scale(1.05)
+            transform: scale(1)
             z-index: 200
             border-color: rgba(0,0,0,0)
 
@@ -32,18 +32,19 @@
 
             .zigzag
                 .inner
-                    background: linear-gradient(45deg, transparent 30px, $purple 0), linear-gradient(-45deg, transparent 30px, $purple 0)
+                    background: linear-gradient(45deg, transparent 35px, $purple 0), linear-gradient(-45deg, transparent 35px, $purple 0)
                     background-position: left bottom
                     background-repeat: repeat-x
-                    background-size: 30px 30px
+                    background-size: 35px 35px
                     content: " "
                     display: block
                     position: absolute
                     left: -15px
                     width: 1000px
-                    height: 30px
+                    height: 35px
                     top: 0
                     opacity: 1
+
         hr
             @include transition(opacity .1s)
             width: 1px
@@ -71,6 +72,7 @@
                 height: 150px
                 background-position: center center
                 background-size: cover
+                margin-bottom: 15px
 
                 .banner
                     display: block
@@ -80,8 +82,11 @@
                     top: 65px
                     padding: 15px
 
-                    h3, .speaker
-                        font-size: 0.9rem
+                    h3
+                        font-size: 0.8rem
+                        line-height: 1rem
+                    .speaker
+                        font-size: 0.7rem
                         line-height: 1rem
 
         .zigzag
@@ -89,7 +94,7 @@
             position: absolute
             width: 100%
             height: 20px
-            bottom: -20px
+            bottom: -17px
             z-index: 100
             left: 0
             overflow: hidden

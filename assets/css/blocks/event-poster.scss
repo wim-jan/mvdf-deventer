@@ -34,19 +34,9 @@
                 text-decoration: none;
                 display: block;
 
-                &:hover, &.active {
-                    &.active {
-                        z-index: 500;
-                        .opaque {
-                            opacity: 0;
-                        }
-                        section {
-                            display: none;
-                        }
-                    }
-
-                    .image, .hextop, .hexbottom {
-                        border-color: $red !important;
+                &:hover {
+                    .left {
+                        opacity: .6;
                     }
                 }
 
@@ -58,7 +48,8 @@
                 height: 407px;
 
                 .left {
-
+                    @include transition(opacity .3s);
+                    opacity: 1;
                 }
 
                 .right {
