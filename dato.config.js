@@ -36,11 +36,20 @@ module.exports = (dato, root, i18n) => {
     }
   });
 
-  root.createPost(`content/deventer.md`, 'yaml', {
+  root.createPost(`content/deventer/_index.md`, 'yaml', {
     frontmatter: {
       title: dato.deventer.title,
       introduction: dato.deventer.introduction
     },
     content: dato.deventer.content
+  });
+
+  root.createPost(`content/contact/_index.md`, 'yaml', {
+    frontmatter: {
+      title: dato.contact.title,
+      secondContent: dato.contact.secondContent,
+      itemType: 'contact'
+    },
+    content: dato.contact.firstContent
   });
 };
