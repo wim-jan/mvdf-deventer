@@ -36,20 +36,20 @@ module.exports = (dato, root, i18n) => {
     }
   });
 
-  root.createPost(`content/deventer/_index.md`, 'yaml', {
-    frontmatter: {
-      title: dato.deventer.title,
-      introduction: dato.deventer.introduction
-    },
-    content: dato.deventer.content
-  });
+  // root.createPost(`content/deventer/_index.md`, 'yaml', {
+  //   frontmatter: {
+  //     title: dato.deventer.title,
+  //     introduction: dato.deventer.introduction
+  //   },
+  //   content: dato.deventer.content
+  // });
 
-  root.createPost(`content/contact/_index.md`, 'yaml', {
-    frontmatter: {
-      title: dato.contact.title,
-      content: dato.contact.content,
-      itemType: 'contact'
-    },
-    content: dato.contact.content
-  });
+  // root.createPost(`content/contact/_index.md`, 'yaml', {
+  //   frontmatter: {
+  //     title: dato.contact.title,
+  //     content: dato.contact.content,
+  //     itemType: 'contact'
+  //   },
+  //   content: dato.contact.content
+  // });
 };
