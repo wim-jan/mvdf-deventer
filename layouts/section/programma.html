@@ -2,29 +2,11 @@
 
 <div class="overlay hide-and-seek"></div>
 
-<div class="container outer event-listing-2">
+<div class="container outer event-listing">
     {{ range $index, $element := sort (where .Data.Pages "Section" "programma") ".Params.datetime" }} 
         {{ if .Params.datetime | and .Params.photo }} 
 
-            {{ partial "event-poster-2.html" . }}
-
-            <!--{{ if eq (mod $index 3) 0 }}
-                {{ $.Scratch.Set "class" "left"}}
-            {{ else }}
-                {{ $.Scratch.Set "class" "right"}}
-            {{ end}}
-
-            {{ if eq (mod $index 2) 0 }}
-                <div class="container outer event-listing {{ $.Scratch.Get "class" }} {{ if eq $index 0 }}first{{ end }}">
-                    <div class="container inner bounding-box"> 
-            {{ end }}
-
-                    {{ partial "event-poster.html" . }}
-
-            {{ if eq (mod $index 2) 1 }}
-                    </div>
-                </div>
-            {{ end }}-->
+            {{ partial "event-poster.html" . }}
 
         {{ end }} 
     {{ end }} 

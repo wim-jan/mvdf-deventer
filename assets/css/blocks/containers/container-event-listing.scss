@@ -1,6 +1,5 @@
 .container.event-listing {
     @include transition(height .2s);
-    height: calc(450px + 0vh);
 
     &>.inner {
         display: flex;
@@ -8,10 +7,7 @@
         align-items: center;
         padding-left: 30px;
         position: relative;
-    }
-
-    &.first {
-        // margin-top: 80px;
+        margin-bottom: 40px;
     }
 
     &.left {

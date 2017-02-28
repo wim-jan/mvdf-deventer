@@ -1,17 +1,30 @@
 .container.event-listing {
 
+    .inner {
+        &:first-child {
+            margin-top: 30px;
+        }
+
+        &:nth-child(odd) {
+            .left {
+                margin-left: 0px;
+            }
+        }
+
+        &:nth-child(even) {
+            .left {
+                margin-left: 190px !important;
+            }
+        }
+    }
+
     .event {
         &.poster {
             @include transition(left .2s);
             position: relative;
             left: 0;
-            width: 410px;
-            height: 450px;
+            height: 310px;
             margin-top: -80px;
-
-            &:first-child {
-                margin-right: 95px;
-            }
 
             a {
                 position: relative;
@@ -38,112 +51,75 @@
 
             }
 
-            .image {
-                @include transition(border-color .2s);
+            .inner {
                 position: relative;
-                width: 400px; 
-                height: 230.94px;
-                margin: 115.47px 0;
-                background-size: auto 415.6922px;
-                background-position: center;
-                border-left: solid 20px $silver-light;
-                border-right: solid 20px $silver-light;
-                
-                .hextop,
-                .hexbottom {
-                    position: absolute;
-                    z-index: 1;
-                    width: 282.84px;
-                    height: 282.84px;
-                    overflow: hidden;
-                    transform: scaleY(0.5774) rotate(-45deg);
-                    background: inherit;
-                    left: 38.58px;
+                margin-left: 40px;
+                height: 407;
+
+                .left {
+
                 }
 
-                /*counter transform the bg image on the caps*/
-                .hextop:after,
-                .hexbottom:after {
-                    content: "";
-                    position: absolute;
-                    width: 360.0000px;
-                    height: 207.8460969082653px;
-                    transform:          rotate(45deg) scaleY(1.7321) translateY(-103.9230px);
-                    transform-origin: 0 0;
-                    background: inherit;
-                }
+                .right {
+                    section {
+                        margin-left: 30px;
+                        
+                        span {
+                            @include default();
+                            font-size: $font-size-h2;
+                            display: block;
+                            line-height: 1.6rem;
 
-                .hextop {
-                    @include transition(border-color .2s);
-                    top: -141.4214px;
-                    border-top: solid 28.2843px $silver-light;
-                    border-right: solid 28.2843px $silver-light;
-                }
-
-                .hextop:after {
-                    background-position: center top;
-                }
-
-                .hexbottom {
-                    @include transition(border-color .2s);
-                    bottom: -141.4214px;
-                    border-bottom: solid 28.2843px $silver-light;
-                    border-left: solid 28.2843px $silver-light;
-                }
-
-                .hexbottom:after {
-                    background-position: center bottom;
-                }
-
-                &:after {
-                    content: "";
-                    position: absolute;
-                    top: 11.5470px;
-                    left: 0;
-                    width: 360.0000px;
-                    height: 207.8461px;
-                    z-index: 2;
-                    background: inherit;
-                }
-
-                top: 10px;
-                left: 20px;
-
-                .opaque {
-                    background-color: rgba(0, 0, 0, 0.8);
-                    width: 300px;
-                    height: 300px;
-                    z-index: 500;
-                    position: absolute;
+                            &.title {
+                                @include default-bold();
+                                font-size: $font-size-h1;
+                                margin-top: 130px;
+                                line-height: 3rem;
+                            }
+                        }
+                    }
                 }
             }
 
-            section {
-                position: absolute;
-                bottom: 1px;
-                z-index: 100;
-                width: calc(100% - 50px);
+            .image {
+                @include hexagon-mask(300px);
+            }
 
-                @include safari-only() {
-                    width: calc(100% - 40px);
-                }
+            .hexagon {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 200;
 
-                text-align: left;
-                margin-left: 40px;
-                background: rgba(0,0,0,.8);
-                color: #fff;
-                padding: 15px;
+                &.date {
+                    @include hexagon($purple, 100px);
+                    left: -20px;
+                    top: -98px;
 
-                .hexagon {
-                    @include hexagon($silver-dark, 30px);
-                    display: flex;
-                    justify-content: center;
-                    margin-right: 10px;
-
-                    i {
-                        color: $silver-light;
+                    span {
+                        @include default();
+                        font-size: 3rem;
+                        color: $white;
                     }
                 }
+                &.category {
+                    @include hexagon(rgba(0, 0, 0, .8), 50px);
+                    top: -242px;
+                    left: 30px;
+
+
+                    i {
+                        font-size: 1.5rem;
+                        color: $white;
+                    }
+                }
+            }
+
+            a.event {
+                display: flex;
+                flex-direction: row;
+
             }
         }
     }

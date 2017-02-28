@@ -1,3 +1,7 @@
+$font-size-h1: 2rem;
+$font-size-h2: 1.6rem;
+$font-size-h3: 1.2rem;
+
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
 @mixin heading() {
@@ -29,15 +33,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: $font-size-h1;
 }
 
 h2 {
-    font-size: 1.6rem;
+    font-size: $font-size-h2;
 }
 
 h3 {
-    font-size: 1.2rem;
+    font-size: $font-size-h3;
 }
 
 p, span {
