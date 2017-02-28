@@ -1,4 +1,4 @@
-{{ $title := lower .Title | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
+{{ $title := lower .Title | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "[^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
 
 <div class="event preview" data-coordinates='[ {{ .Params.location.latitude }}, {{ .Params.location.longitude }} ]' data-id="{{ .Params.id }}">
     <hr>
@@ -11,7 +11,7 @@
             <div class="poster" style="background-image: url({{ .Params.photo.url }})">
                 <span class="banner">
                     <h3>{{ .Title }}</h3>
-                    <span class="speaker">Joke J. Hermsen</span>
+                    <span class="speaker">{{ .Params.subtitle }}</span>
                 </span>
             </div>
             <p>

@@ -1,5 +1,3 @@
-import HideAndSeek from './hide-and-seek'
-
 class EventView {
 
     constructor() {
@@ -9,7 +7,6 @@ class EventView {
 
         this.event = null;
         this.eventObject = null;
-        this.overlay = new HideAndSeek(document.querySelector('.overlay'));
         this.attatchEvents()
         this.checkForCurrentEvent()
     }
@@ -18,12 +15,9 @@ class EventView {
         var self = this;
         this.events.forEach((event) => {
             event.addEventListener('click', (e) => {
-                self.openEvent(e.target);
+                self.openEvent(e.srcElement);
             })
         });
-        document.querySelector('.overlay').addEventListener('click', () => {
-            self.collapseEvents();
-        })
         document.querySelectorAll('.close-button').forEach((c) => {
             c.addEventListener('click', (e) => {
                 self.collapseEvents()
@@ -41,15 +35,12 @@ class EventView {
     }
 
     collapseEvents() {
-        document.querySelectorAll('.container.event-listing.fold-out, .container.event-listing a.active').forEach((e) => {
+        document.querySelectorAll('.event.open, .event.visible').forEach((e) => {
             e.className = e.className
-                .replace('fold-out', '')
-                .replace('active', '')
+                .replace('open', '')
+                .replace('visible', '')
+            e.closest('.event-row').style.height = 'auto'
         });
-
-        this.overlay.close();
-        this.event.close();
-        this.eventObject.style.left = 0;
     }
 
     findEvent(id) {
@@ -62,35 +53,27 @@ class EventView {
     }
 
     openEvent(el) {
-        var anchor = el.closest('a'),
-            id = anchor.href.match(/\#(.*)$/)[1],
+
+        this.collapseEvents();
+
+        var el = el.closest('a'),
+            id = el.href.match(/\#(.*)$/)[1],
             event = document.querySelector('[data-id="' + id + '"]'),
-            container = el.closest('div.container.event-listing')
+            row = el.closest('.event-row')
 
-        this.event = new HideAndSeek(event)
+        event.className += " open"
 
-        anchor.className += 'active';
+        var details = event.querySelector('.details'),
+            content = event.querySelector('.content'),
+            margin = 30,
+            add = Math.max(details.getBoundingClientRect().height, content.getBoundingClientRect().height),
+            height = row.getBoundingClientRect().height + add + margin
+
+        row.style.height = height + 'px'
 
         setTimeout(() => {
-            this.overlay.open();
-
-            setTimeout(() => {
-                this.event.open()
-            })
-        })
-
-        this.moveToLeft(el)
-    }
-
-    moveToLeft(el) {
-        var obj = el.closest('.event.poster'),
-            container = obj.closest('.bounding-box'),
-            crect = container.getBoundingClientRect(),
-            orect = obj.getBoundingClientRect()
-
-        this.eventObject = obj;
-
-        obj.style.left = 0 - (orect.left - crect.left) + "px"
+            event.className += " visible"
+        }, 500)
     }
 
     doScrolling(elementY, duration) { 

@@ -1,0 +1,50 @@
+{{ $title := lower .Title | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "[^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
+
+<div class="container inner event-row">
+    <article>
+        <div class="event poster">
+            <div class="inner">
+                <a href="#{{ $title}}" data-event-id="{{ $title }}" class="event">
+                    <div class="left">
+                        <div class="image" style="background-image: url({{ .Params.photo.url }})">
+                            <div class="hextop"></div>
+                            <div class="hexbottom"></div>
+                        </div>
+                        <div class="date hexagon">
+                            <span>{{ .Params.datetime | dateFormat "2" }}</span>
+                        </div>
+                        <div class="category hexagon">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <section>
+                            <h1>{{ .Title }}</h1>
+                            <h2>{{ .Params.subtitle }}</h2>
+                        </section>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="event content" data-id="{{ $title }}">
+            <a href="#" class="close-button"></a>
+            <div class="details">
+                {{ if .Params.externalLink }}
+                    <a href="{{ .Params.externalLink }}" target="_blank" class="button red fluid"><i class="fa fa-book"></i>{{ if .Params.buttonText }}{{ .Params.buttonText }}{{ else }}Reserveer direct!{{ end }}</a>
+                    <hr>
+                {{ end }}
+                <ul>
+                    {{ if .Params.cost }}<li><span class="hexagon"><i class="fa fa-money"></i></span><span>{{ .Params.cost | markdownify }}</span></li>{{ end }}
+                    <li><span class="hexagon"><i class="fa fa-calendar"></i></span><span>{{ .Params.datetime | dateFormat "2" }} april 2017</span></li>
+                    <li><span class="hexagon"><i class="fa fa-clock-o"></i></span><span>{{ .Params.datetime | dateFormat "15:04" }} uur</span></li>
+                    {{ if .Params.locationText }}<li><span class="hexagon"><i class="fa fa-map-marker"></i></span><span>{{ .Params.locationText }}</span></li>{{ end }}
+                </ul>
+            </div>
+            <div class="content">
+                <p>
+                    {{ .Params.content | markdownify }}
+                </p>
+            </div>
+        </div>
+    </article>
+</div>

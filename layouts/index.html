@@ -30,7 +30,7 @@
                 <div class="event-slider">
                     <div class="slide-container">
                         {{ range sort (where .Data.Pages "Section" "programma") ".Params.datetime" }}
-                            {{ if .Params.datetime | and .Params.photo }}
+                            {{ if .Params.datetime | and .Params.photo | and .Params.location | and (isset .Params.location "latitude") }}
                                 {{ partial "event-preview.html" . }}
                             {{ end }}
                         {{ end }}
