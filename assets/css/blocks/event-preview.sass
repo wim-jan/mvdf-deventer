@@ -58,14 +58,30 @@
         .inner
             padding: 0
             
-            span.date
-                display: block
-                width: 100%
-                margin-bottom: 15px
+            span
+                &.date
+                    display: block
+                    width: 100%
+                    margin-bottom: 15px
 
-                .day
-                    @include heading-bold()
-                    font-size: 3rem
+                    .day
+                        @include heading-bold()
+                        font-size: 3rem
+                
+                &.category
+                    @include hexagon($black, 40px)
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    position: relative
+                    right: 0
+                    margin-top: -40px
+                    top: -12px
+                    left: 220px
+
+                    i
+                        font-size: 1.3rem
+            
 
             .poster
                 width: 100%

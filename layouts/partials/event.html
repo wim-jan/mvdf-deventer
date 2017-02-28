@@ -13,10 +13,19 @@
                         <div class="date hexagon">
                             <span>{{ .Params.datetime | dateFormat "2" }}</span>
                         </div>
-                        <!-- Todo :( -->
-                        <!--<div class="category hexagon">
-                            <i class="fa fa-graduation-cap"></i>
-                        </div>-->
+                        {{ if eq .Params.category.name "Toegepast" }}
+                            <div class="category hexagon">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                        {{ else if eq .Params.category.name "Academisch" }}
+                            <div class="category hexagon">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                        {{ else }}
+                            <div class="category hexagon">
+                                <i class="fa fa-comments"></i>
+                            </div>
+                        {{ end }}
                     </div>
                     <div class="right">
                         <section>

@@ -8,6 +8,15 @@
                 <span class="day">{{ .Params.datetime | dateFormat "2" }}</span>
                 april - 2017
             </span>
+            <span class="category">
+                {{ if eq .Params.category.name "Toegepast" }}
+                        <i class="fa fa-eye"></i>
+                {{ else if eq .Params.category.name "Academisch" }}
+                    <i class="fa fa-graduation-cap"></i>
+                {{ else }}
+                    <i class="fa fa-comments"></i>
+                {{ end }}
+            </span>
             <div class="poster" style="background-image: url({{ .Params.photo.url }})">
                 <span class="banner">
                     <h3>{{ .Title }}</h3>
