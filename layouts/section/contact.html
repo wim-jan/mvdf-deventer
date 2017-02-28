@@ -1,32 +1,18 @@
 {{ partial "header.html" . }}
 
-{{ range .Data.Pages }}
-    {{ if eq .Type "content" }} 
-        <div class="container outer home">
-            <div class="container inner">
-                <section class="header">
-                    <div class="col-md-4 col-xs-12">
-                        <img src="/img/logo.png" alt="Maand van de Filosofie Deventer" />
-                    </div>
-                    <div class="col-md-8 col-xs-12">
-                        <h1>{{ .Title }}</h1>
-                        {{ .Content }}
-                    </div>
-                </section>
+<div class="container outer contact">
+    <div class="container inner">
+        <section class="header">
+            <div class="col-md-4 col-xs-12">
+                <img src="/img/logo.png" alt="Maand van de Filosofie Deventer" />
             </div>
-        </div>
-
-        <div class="container outer">
-            <div class="container inner">
-                <section>
-                    <div class="col-md-8 col-md-offset-2 col-xs-12">
-                        {{ .Params.secondContent | markdownify }}
-                    </div>
-                </section>
+            <div class="col-md-8 col-xs-12">
+                <h1>{{ .Title }}</h1>
+                {{ .Content }}
             </div>
-        </div>
-    {{ end }}
-{{ end }}
+        </section>
+    </div>
+</div>
 
 {{ partial "partners.html" . }}
 
