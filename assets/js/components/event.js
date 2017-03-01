@@ -45,14 +45,17 @@ class EventView {
 
     collapseEvents() {
         var arr = document.querySelectorAll('.event.open, .event.visible'),
-            e = null
+            e = null,
+            row = null
 
         for (var i = 0, len = arr.length; i < len; i++) {
             e = arr[i]
             e.className = e.className
                 .replace('open', '')
                 .replace('visible', '')
-            e.closest('.event-row').style.height = 'auto'
+
+            row = this.findAncestor(e, 'event-row')
+            row.style.height = 'auto'
         };
     }
 
@@ -69,10 +72,10 @@ class EventView {
 
         this.collapseEvents();
 
-        var el = el.closest('a'),
+        var el = this.findAncestor(el, 'event'),
             id = el.href.match(/\#(.*)$/)[1],
             event = document.querySelector('[data-id="' + id + '"]'),
-            row = el.closest('.event-row')
+            row = this.findAncestor(el, 'event-row')
 
         event.className += " open"
 
@@ -109,6 +112,11 @@ class EventView {
                 window.requestAnimationFrame(step)
             }
         })
+    }
+
+    findAncestor (el, cls) {
+        while ((el = el.parentElement) && !el.classList.contains(cls));
+        return el;
     }
 }
 
