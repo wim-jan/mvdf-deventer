@@ -37,14 +37,15 @@ var MapBox = {
                     'latlon': JSON.parse(el.dataset.coordinates)
                 })
         }
+
+        console.log(this.coordinates)
     },
 
     addMarkers: function() {
         var c = null,
             arr = this.coordinates
 
-        for (var i = 0, len = arr.length; i < len; i++) {
-            c = arr[i]
+        this.coordinates.map((c) => {
             var icon = L.divIcon({
                 className: 'mvdf-deventer-marker',
                 html: this.marker('#CC0000', c.id)
@@ -59,7 +60,7 @@ var MapBox = {
                 .on('mouseout', (e) => {
                     this.highlightEvent(null)
                 })
-        }
+        })
     },
 
     highlightEvent: function(id) {
