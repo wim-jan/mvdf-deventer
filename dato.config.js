@@ -58,6 +58,17 @@ module.exports = (dato, root, i18n) => {
     content: dato.contact.content
   });
 
+  root.createPost(`content/privacy.md`, 'yaml', {
+    frontmatter: {
+      title: dato.privacy.title,
+      introduction: dato.privacy.introduction,
+      itemType: 'privacy',
+      photo: dato.privacy.photo,
+      image: dato.privacy.image
+    },
+    content: dato.privacy.content
+  });
+
   // root.directory('./content', dir => {
   //   dato.singleInstanceItemTypes.forEach(itemType => {
   //     const item = dato.itemsOfType(itemType) ? dato.itemsOfType(itemType)[0] : null;
