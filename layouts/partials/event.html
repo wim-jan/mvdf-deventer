@@ -47,7 +47,7 @@
                     {{ if .Params.cost }}<li><span class="hexagon"><i class="fa fa-money"></i></span><span>{{ .Params.cost | markdownify }}</span></li>{{ end }}
                     <li><span class="hexagon"><i class="fa fa-calendar"></i></span><span>{{ .Params.datetime | dateFormat "2" }} april 2017</span></li>
                     <li><span class="hexagon"><i class="fa fa-clock-o"></i></span><span>{{ .Params.datetime | dateFormat "15:04" }} uur</span></li>
-                    {{ if .Params.locationText }}<li><span class="hexagon"><i class="fa fa-map-marker"></i></span><span>{{ .Params.locationText }}</span></li>{{ end }}
+                    <li><span class="hexagon"><i class="fa fa-map-marker"></i></span><span>{{ .Params.locationtext }}</span></li>
                 </ul>
             </div>
             <div class="content">

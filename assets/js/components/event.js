@@ -72,7 +72,7 @@ class EventView {
 
         this.collapseEvents();
 
-        var el = this.findAncestor(el, 'event'),
+        var el = el.nodeName == 'A' ? el : this.findAncestor(el, 'event'),
             id = el.href.match(/\#(.*)$/)[1],
             event = document.querySelector('[data-id="' + id + '"]'),
             row = this.findAncestor(el, 'event-row')
