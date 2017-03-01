@@ -22,7 +22,10 @@ var EventPreview = {
     },
 
     attachListeners: function() {
-        var self = this
+        var self = this,
+            arr = this.events,
+            ev = null
+
         window.addEventListener('resize', (e) => {
             clearTimeout(this.resizeTimer);
             this.resizeTimer = setTimeout(() => {
@@ -30,19 +33,27 @@ var EventPreview = {
                 self.fillOutToRight()
             }, 500);
         })
-        this.events.forEach((ev) => {
+        for (var i = 0, len = arr.length; i < len; i++) {
+            ev = arr[i]
             ev.addEventListener('mouseover', (e) => {
-                document.querySelectorAll('.event.preview.highlight').forEach((x) => {
-                    x.className = x.className.replace(' highlight', '')
-                })
+                var open = document.querySelectorAll('.event.preview.highlight'),
+                    el = null
+                for (var x = 0, lenx = open.length; x < lenx; x++) {
+                    el = open[x]
+                    el.className = el.className.replace(' highlight', '')
+                }
             })
-        })
+        }
     },
 
     position: function () {
-        this.zigzags.forEach((z) => {
+        var arr = this.zigzags,
+            z = null
+            
+        for (var i = 0, len = arr.length; i < len; i++) {
+            z = arr[i]
             z.style.left = Math.ceil(0 - (z.getBoundingClientRect().left % 300)) + 'px'
-        })
+        }
     },
 
     fillOutToRight: function() {
@@ -71,9 +82,13 @@ var EventPreview = {
     },
 
     clearCurrentHighlights: function() {
-        document.querySelectorAll('.event.preview.highlight').forEach((ce) => {
+        var arr = document.querySelectorAll('.event.preview.highlight'),
+            ce = null
+            
+        for (var i = 0, len = arr.length; i < len; i++) {
+            ce = arr[i]
             ce.className = ce.className.replace(' highlight', '')
-        })
+        }
     },
 
     isInView: function(event) {

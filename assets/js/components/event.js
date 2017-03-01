@@ -12,19 +12,28 @@ class EventView {
     }
 
     attatchEvents() {
-        var self = this;
-        this.events.forEach((event) => {
+        var self = this,
+            arr = this.events,
+            event = null
+
+        for (var i = 0, len = arr.length; i < len; i++) {
+            event = arr[i]
             event.addEventListener('click', (e) => {
                 self.openEvent(e.srcElement);
             })
-        });
-        document.querySelectorAll('.close-button').forEach((c) => {
+        }
+
+        var arr = document.querySelectorAll('.close-button'),
+            c = null
+
+        for (var i = 0, len = arr.length; i < len; i++) {
+            c = arr[i]
             c.addEventListener('click', (e) => {
                 self.collapseEvents()
                 e.preventDefault()
                 return false
             })
-        })
+        }
     }
 
     checkForCurrentEvent() {
@@ -35,12 +44,16 @@ class EventView {
     }
 
     collapseEvents() {
-        document.querySelectorAll('.event.open, .event.visible').forEach((e) => {
+        var arr = document.querySelectorAll('.event.open, .event.visible'),
+            e = null
+
+        for (var i = 0, len = arr.length; i < len; i++) {
+            e = arr[i]
             e.className = e.className
                 .replace('open', '')
                 .replace('visible', '')
             e.closest('.event-row').style.height = 'auto'
-        });
+        };
     }
 
     findEvent(id) {

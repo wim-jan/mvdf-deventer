@@ -27,21 +27,24 @@ var MapBox = {
     },
 
     findCoordinates: function() {
-        var elements = document.querySelectorAll('div[data-coordinates]')
-        elements.forEach((el) => {
-            console.log()
+        var arr = document.querySelectorAll('div[data-coordinates]'),
+            el = null
+        for (var i = 0, len = arr.length; i < len; i++) {
+            el = arr[i]
             if (el.dataset.coordinates && JSON.parse(el.dataset.coordinates).length > 0)
                 this.coordinates.push({
                     'id': el.dataset.id,
                     'latlon': JSON.parse(el.dataset.coordinates)
                 })
-        })
+        }
     },
 
     addMarkers: function() {
-        
+        var c = null,
+            arr = this.coordinates
 
-        this.coordinates.forEach((c) => {
+        for (var i = 0, len = arr.length; i < len; i++) {
+            c = arr[i]
             var icon = L.divIcon({
                 className: 'mvdf-deventer-marker',
                 html: this.marker('#CC0000', c.id)
@@ -56,7 +59,7 @@ var MapBox = {
                 .on('mouseout', (e) => {
                     this.highlightEvent(null)
                 })
-        })
+        }
     },
 
     highlightEvent: function(id) {
