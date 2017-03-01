@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<%= settings.language %>">
+<html lang="nl">
 
 <head>
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -8,6 +8,9 @@
     {{ if eq .Site.Params.env "production" }}
         <link rel="stylesheet" href="/assets/all.css"> 
     {{ end }} 
+    <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/imgfavicon-16x16.png" sizes="16x16" />
+
     <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
 </head>
 
