@@ -36,20 +36,34 @@ module.exports = (dato, root, i18n) => {
     }
   });
 
-  // root.createPost(`content/deventer/_index.md`, 'yaml', {
-  //   frontmatter: {
-  //     title: dato.deventer.title,
-  //     introduction: dato.deventer.introduction
-  //   },
-  //   content: dato.deventer.content
-  // });
+  root.createPost(`content/deventer.md`, 'yaml', {
+    frontmatter: {
+      title: dato.deventer.title,
+      introduction: dato.deventer.introduction,
+      itemType: 'deventer',
+      photo: dato.deventer.photo,
+      image: dato.deventer.image
+    },
+    content: dato.deventer.content
+  });
 
-  // root.createPost(`content/contact/_index.md`, 'yaml', {
-  //   frontmatter: {
-  //     title: dato.contact.title,
-  //     content: dato.contact.content,
-  //     itemType: 'contact'
-  //   },
-  //   content: dato.contact.content
+  root.createPost(`content/contact.md`, 'yaml', {
+    frontmatter: {
+      title: dato.contact.title,
+      introduction: dato.contact.introduction,
+      itemType: 'contact',
+      photo: dato.contact.photo,
+      image: dato.contact.image
+    },
+    content: dato.contact.content
+  });
+
+  // root.directory('./content', dir => {
+  //   dato.singleInstanceItemTypes.forEach(itemType => {
+  //     const item = dato.itemsOfType(itemType) ? dato.itemsOfType(itemType)[0] : null;
+  //     if (item) {
+  //       dir.createPost(`${slugify(item.title)}.md`, 'yaml', { frontmatter: item.toMap(), content: item.content });
+  //     }
+  //   });
   // });
 };

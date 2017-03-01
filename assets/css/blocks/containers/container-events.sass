@@ -1,7 +1,7 @@
 .container.events
     @include zigzag($red, transparent)
         z-index: 100
-        margin-top: 90px
+        bottom: -450px
         
     background-color: $red
     color: #fff
@@ -12,6 +12,7 @@
 
     .deventer
         color: #fff
+        position: relative
 
     .events
         display: flex
@@ -28,13 +29,9 @@
         overflow: hidden
         z-index: 200
         margin-bottom: -60px
-        /* margin-top: -448px */
         height: calc(100% + 120px)
-        /* content: '' */
         position: absolute
         min-height: calc(450px + 45px)
-        /* margin-left: 39% */
-        /* min-width: 9999px */
         margin-top: -40px
         right: 0
         width: 100%

@@ -32,6 +32,12 @@
         }
     }
 
+    .copyright {
+        a {
+            color: $white;
+        }
+    }
+
     .socials {
         display: flex;
         flex-direction: row;
@@ -61,7 +67,7 @@
         }
     }
 
-    .all-credits-go-to-ilja-nienhaus {
+    .right {
         display: block;
         text-align: right;
 

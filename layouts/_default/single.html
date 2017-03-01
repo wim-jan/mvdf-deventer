@@ -1,9 +1,14 @@
 {{ partial "header.html" . }}
 
-<div class="container outer poster" {{ if .Params.photo }} style="background-image: url({{ .Params.photo.url }})" {{ end }}>
+<div class="container outer home" {{ if .Params.photo }} style="background-image: url({{ .Params.photo.url }})" {{ end }}>
     <div class="container inner">
-        <section class="intro">
-            <div class="col-md-offset-6 col-md-6">
+        <section class="header">
+            <div class="col-md-4">
+                {{ if .Params.image }}
+                    <img src="https://www.datocms-assets.com{{ .Params.image.value.path }}">
+                {{ end}}
+            </div>
+            <div class="col-md-8">
                 <h1>{{ .Title }}</h1>
                 <p class="introduction">
                     {{ .Params.introduction | markdownify }}
@@ -15,7 +20,7 @@
 
 <div class="container outer">
     <div class="container inner">
-        <section>
+        <section class="col-md-10 col-md-offset-1">
             {{ .Content }}
         </section>
     </div>
@@ -24,5 +29,3 @@
 {{ partial "partners.html" . }}
 
 {{ partial "footer.html" . }}
-
-
