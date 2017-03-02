@@ -19,7 +19,7 @@ class EventView {
         for (var i = 0, len = arr.length; i < len; i++) {
             event = arr[i]
             event.addEventListener('click', (e) => {
-                self.openEvent(e.srcElement);
+                self.openEvent(e.srcElement || e.target);
             })
         }
 
@@ -72,8 +72,9 @@ class EventView {
 
         this.collapseEvents();
 
-        var el = el.nodeName == 'A' ? el : this.findAncestor(el, 'event'),
-            id = el.href.match(/\#(.*)$/)[1],
+        el = el.nodeName == 'A' ? el : this.findAncestor(el, 'event')
+
+        var id = el.href.match(/\#(.*)$/)[1],
             event = document.querySelector('[data-id="' + id + '"]'),
             row = this.findAncestor(el, 'event-row')
 

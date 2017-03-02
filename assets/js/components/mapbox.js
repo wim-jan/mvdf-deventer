@@ -37,8 +37,6 @@ var MapBox = {
                     'latlon': JSON.parse(el.dataset.coordinates)
                 })
         }
-
-        console.log(this.coordinates)
     },
 
     addMarkers: function() {
