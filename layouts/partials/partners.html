@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <ul>
                 {{ range where .Site.Pages "Section" "partner" }}
-                    <li><a href="{{ .Params.externallink }}"><img src="{{ .Params.logo.url }}&w=200" /></a></li>
+                    <li><a href="/partner"><img src="{{ .Params.logo.url }}&w=200" /></a></li>
                 {{ end }}
                 </ul>
             </div>
