@@ -35,8 +35,10 @@
                 display: block;
 
                 &:hover {
-                    .left {
-                        opacity: .6;
+                    &:not(.open) {
+                        .left {
+                            opacity: .6;
+                        }
                     }
                 }
 
@@ -93,6 +95,14 @@
                         @include default();
                         font-size: 3rem;
                         color: $white;
+                        margin-top: -15px;
+
+                        &.small {
+                            position: absolute;
+                            font-size: .8rem;
+                            bottom: -7px;
+                            z-index: 300;
+                        }
                     }
                 }
                 &.category {

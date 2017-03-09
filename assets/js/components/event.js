@@ -64,7 +64,8 @@ class EventView {
         if (obj) {
             setTimeout(() => {
                 obj.click()
-            }, 1000)
+                this.doScrolling(obj.getBoundingClientRect().top + 50, 10)
+            }, 100)
         }
     }
 
@@ -79,6 +80,7 @@ class EventView {
             row = this.findAncestor(el, 'event-row')
 
         event.className += " open"
+        el.className += " open"
 
         var details = event.querySelector('.details'),
             content = event.querySelector('.content'),

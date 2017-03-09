@@ -12,6 +12,7 @@
                         </div>
                         <div class="date hexagon">
                             <span>{{ .Params.datetime | dateFormat "2" }}</span>
+                            <span class="small">april</span>
                         </div>
                         {{ if eq .Params.category.name "Toegepast" }}
                             <div class="category hexagon">
@@ -29,7 +30,7 @@
                     </div>
                     <div class="right">
                         <section>
-                            <h1>{{ .Title }}</h1>
+                            <h1 cid="{{ $title }}">{{ .Title }}</h1>
                             <h2>{{ .Params.subtitle }}</h2>
                         </section>
                     </div>

@@ -1,3 +1,4 @@
+
 <div class="container outer zigzag white">
     <div class="container inner">
         <section class="partners">
@@ -8,7 +9,10 @@
             <div class="col-md-12">
                 <ul>
                 {{ range where .Site.Pages "Section" "partner" }}
-                    <li><a href="/partner"><img src="{{ .Params.logo.url }}&w=200" /></a></li>
+                
+                    {{ $title := lower .Params.name | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "[^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
+
+                    <li><a href="/partner/#{{ $title }}"><img src="{{ .Params.logo.url }}&w=200" /></a></li>
                 {{ end }}
                 </ul>
             </div>
