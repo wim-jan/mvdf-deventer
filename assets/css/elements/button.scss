@@ -60,4 +60,22 @@
             }
         }
     }
+
+    &.dark {
+        background-color: $dark;
+        color: $light;
+        text-decoration: none;
+
+        &:hover {
+            background-color: $dark;
+        }
+
+        i {
+            border-color: rgba($dark, .9)
+
+            &:after {
+                background-color: $dark;
+            }
+        }
+    }
 }

@@ -36,6 +36,19 @@ header
         
     background-color: $red
 
+    h1
+        display: flex
+        justify-content: center
+
+        @include mq(tablet)
+            display: none
+
+        img
+            position: absolute
+            width: 30%
+            bottom: 30px
+            z-index: 910
+
     nav
         display: flex
 

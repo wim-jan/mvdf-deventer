@@ -1,4 +1,10 @@
 section.partners {
+    margin: 60px 0 30px;
+
+    @include mq(tablet) {
+        margin: 0;
+    }
+    
     .heading {
         display: flex;
         height: 120px;
