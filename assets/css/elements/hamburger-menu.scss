@@ -1,6 +1,6 @@
 @mixin hamburger-menu($size) {
     display: block;
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     right: 0;
     margin: 15px;
@@ -15,48 +15,49 @@
     border: none;
     cursor: pointer;
     border: 1px solid $red;
+    z-index: 1000;
+    background: rgba(255, 255, 255, .9);
 
     &:focus {
         outline: none;
     }
 
     span {
-        @include transition(background 0s .3s);
+        @include transition(background .3s);
         display: block;
         position: absolute;
         top: $size / 2.19;
         left: $size / 5;
         right: $size / 5;
-        height: $size / 18;
+        height: 1px;
         background: $red;
 
         &:before,
         &:after {
-            @include transition-duration(.3s, .3s);
-            @include transition-delay(.3s, 0s);
             position: absolute;
             display: block;
             left: 0;
             width: 100%;
-            height: $size / 18;
+            height: 1px;
             background-color: $red;
             content: "";
         }
 
         &:before {
-            @include transition-property(top, transform, background-color);
+            @include transition(top .3s, transform .3s, background-color .3s);
             top: -$size / 4.8;
         }
 
         &:after {
-            @include transition-property(bottom, transform, background-color);
+            @include transition(bottom .3s, transform .3s, background-color .3s);
             bottom: -$size / 4.8;
         }
     }
     
     /* active state, i.e. menu open */
-    &.active, &:active {
+    &.active {
         background-color: $red;
+        border: 1px solid $white;
 
         span {
             background: none;
@@ -74,7 +75,7 @@
             }
 
             &:before, &:after {
-                @include transition-delay(0s, .3s)
+                @include transition-delay(.3s, 0)
             }
         }
     }

@@ -1,4 +1,8 @@
 .container.event-listing {
+    .clip-svg {
+        width: 0;
+        height: 0;
+    }
 
     .inner {
         &:first-child {
@@ -11,10 +15,12 @@
             }
         }
 
-        &:nth-child(even) {
-            .left,
-            .event.content {
-                margin-left: 190px !important;
+        @include mq(tablet) {
+            &:nth-child(even) {
+                .left,
+                .event.content {
+                    margin-left: 190px !important;
+                }
             }
         }
     }
@@ -24,8 +30,16 @@
             @include transition(left .2s);
             position: relative;
             left: 0;
-            height: 430px;
-            margin-top: -80px;
+            height: 60vw;
+
+            @include mq($until: tablet) {
+                z-index: 500;
+            }
+
+            @include mq(tablet) {
+                margin-top: -80px;
+                height: 430px;
+            }
 
             a {
                 position: relative;
@@ -46,8 +60,11 @@
 
             .inner {
                 position: relative;
-                margin-left: 40px;
                 height: 407px;
+
+                @include mq(tablet) {
+                    margin-left: 40px;
+                }
 
                 .left {
                     @include transition(opacity .3s);
@@ -56,27 +73,49 @@
 
                 .right {
                     section {
-                        margin-left: 30px;
+                        margin-left: 10px;
+
+                        @include mq(tablet) {
+                            margin-left: 30px;
+                        }
                         
                         h1 {
                             @include default-bold();
-                            font-size: $font-size-h1;
-                            margin-top: 130px;
-                            line-height: 3rem;
+                            font-size: 1.1rem;
+                            line-height: 1.6rem;
+                            margin-top: 20px;
+                            
+                            @include mq(tablet) {
+                                margin-top: 130px;
+                                line-height: 3rem;
+                                font-size: $font-size-h1;
+                            }
                         }
 
                         h2 {
                             @include default();
-                            font-size: $font-size-h2;
                             display: block;
-                            line-height: 1.6rem;
+                            font-size: .8rem;
+                            line-height: 1.4rem;
+
+                            @include mq(tablet) {
+                                line-height: 1.6rem;
+                                font-size: $font-size-h2;
+                            }
                         }
                     }
                 }
             }
 
             .image {
-                @include hexagon-mask(300px);
+                @include mq($until: tablet) {
+                    @include hexagon-mask(33vw);
+                    // @include hexagon($red, 80px);
+                }
+
+                @include mq($from: tablet) {
+                    @include hexagon-mask(300px);
+                }
             }
 
             .hexagon {
@@ -87,32 +126,69 @@
                 z-index: 200;
 
                 &.date {
-                    @include hexagon($purple, 100px);
-                    left: -20px;
-                    top: -98px;
+                    @include mq($until: tablet) {
+                        @include hexagon($purple, 15vw);
+                    }
+
+                    @include mq($from: tablet) {
+                        @include hexagon($purple, 100px);
+                    }
+                    
+                    left: -10px;
+                    top: -15.5vw;
+
+                    @include mq(tablet) {
+                        left: -20px;
+                        top: -128px;
+                    }
 
                     span {
                         @include default();
-                        font-size: 3rem;
+                        font-size: 1.5rem;
                         color: $white;
                         margin-top: -15px;
+                        z-index: 100;
+
+                        @include mq(tablet) {
+                            font-size: 3rem;
+                        }
 
                         &.small {
                             position: absolute;
-                            font-size: .8rem;
-                            bottom: -7px;
+                            font-size: .6rem;
+                            bottom: 10px;
                             z-index: 300;
+
+                            @include mq(tablet) {
+                                font-size: .8rem;
+                                bottom: 20px;
+                            }
                         }
                     }
                 }
                 &.category {
-                    @include hexagon(rgba(0, 0, 0, .8), 50px);
-                    top: -242px;
-                    left: 30px;
+                    @include mq($until: tablet) {
+                        @include hexagon(rgba(0, 0, 0, .8), 7.5vw);
+                    }
 
+                    @include mq($from: tablet) {
+                        @include hexagon(rgba(0, 0, 0, .8), 50px);
+                    }
+                    
+                    top: -39.3vw;
+                    left: 4.9vw;
+
+                    @include mq(tablet) {
+                        top: -287px;
+                        left: 30px;
+                    }
 
                     i {
-                        font-size: 1.5rem;
+                        font-size: .8rem;
+
+                        @include mq(tablet) {
+                            font-size: 1.5rem;
+                        }
                         color: $white;
                     }
                 }
@@ -127,10 +203,13 @@
 
         &.content {
             @include transition(opacity .3s);
-            position: absolute;
-            top: 260px;
             display: none;
             opacity: 0;
+
+            @include mq(tablet) {
+                position: absolute;
+                top: 260px;
+            }
 
             &.open {
                 display: block;
@@ -141,19 +220,29 @@
             }
 
             .details {
-                @include zigzag($silver-light, transparent) {
-                    bottom: -30px;
+                background: $silver-light;
+                min-height: 100%;
+                color: $dark;
+
+                @include mq($until: tablet) {
+                    margin-left: -15px;
+                    width: calc(100% + 30px);
+                    margin-top: -32vw;
+                    padding-top: 30px;
                 }
 
-                width: 270px;
-                margin: 0 20px;
-                background: $silver-light;
-                padding: 100px 15px 0;
-                min-height: 100%;
-                position: absolute;
-                color: $dark;
-                left: 35px;
-                top: -20px;
+                @include mq(tablet) {
+                    @include zigzag($silver-light, transparent) {
+                        bottom: -30px;
+                    }
+
+                    width: 270px;
+                    top: -20px;
+                    left: 35px;
+                    padding: 100px 15px 0;
+                    position: absolute;
+                    margin: 0 20px;
+                }
 
                 .button {
                     margin: 15px auto;
@@ -167,10 +256,20 @@
                 }
 
                 ul {
+                    @include mq($until: tablet) {
+                        padding-left: 35px;
+                    }
+
                     li {
                         display: flex;
                         flex-direction: row;
                         padding: 5px;
+
+                        @include mq($until: tablet) {
+                            &:last-child {
+                                margin-bottom: 30px;
+                            }
+                        }
 
                         .hexagon {
                             @include hexagon($purple, 30px);
@@ -195,7 +294,14 @@
             }
 
             .content {
-                margin-left: 370px;
+
+                @include mq($until: tablet) {
+                    padding-bottom: 60px;
+                }
+
+                @include mq(tablet) {
+                    margin-left: 370px;
+                }
                 
                 h1 {
                     margin-bottom: 15px;

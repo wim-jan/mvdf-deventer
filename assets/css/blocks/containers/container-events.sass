@@ -1,55 +1,73 @@
 .container.events
     @include zigzag($red, transparent)
         z-index: 100
-        margin-top: 115px
+        @include mq(tablet)
+            margin-top: 115px
         
     background-color: $red
     color: $white
-    height: 450px
+
+    @include mq(tablet)
+        height: 450px
 
     section
-        display: flex
+        @include mq(tablet)
+            display: flex
 
     .deventer
         color: $white
         position: relative
-        height: 275px
+        padding-top: 30px
+
+        @include mq(tablet)
+            padding-top: 0
+            height: 275px
 
         h2 
             color: $white
 
     .events
-        display: flex
-        position: absolute
-        right: 0
-
-        .slide-container
+        @include mq(tablet)
             display: flex
-            flex-direction: row
-            width: 100%
-            margin-top: -30px
+            position: absolute
+            right: 0
+
+            .slide-container
+                display: flex
+                flex-direction: row
+                width: 100%
+                margin-top: -30px
 
     .event-slider
-        overflow: hidden
-        z-index: 200
-        margin-bottom: -60px
-        height: calc(100% + 120px)
-        position: absolute
-        min-height: calc(450px + 45px)
-        margin-top: -40px
-        right: 0
-        width: 100%
-        min-width: 100%
-        left: 0
-
-        .slide-container
-            @include transition(left 1s)
-            @include transition-timing-function(ease-out)    
-            display: block
+        @include mq(tablet)
+            overflow: hidden
+            z-index: 200
+            margin-bottom: -60px
+            height: calc(100% + 120px)
             position: absolute
-            width: 9999px
-            height: calc(100% + -10px)
-            padding-top: 15px
-            left: 15px
-            z-index: 400
-            margin-top: -16px
+            min-height: calc(450px + 45px)
+            margin-top: -40px
+            right: 0
+            width: 100%
+            min-width: 100%
+            left: 0
+
+            .slide-container
+                @include transition(left 1s)
+                @include transition-timing-function(ease-out)    
+                display: block
+                position: absolute
+                width: 9999px
+                height: calc(100% + -10px)
+                padding-top: 15px
+                left: 15px
+                z-index: 400
+                margin-top: -16px
+
+    .more-events
+        .button
+            width: 100%
+            margin-bottom: 60px
+
+        @include mq(tablet)
+            display: none

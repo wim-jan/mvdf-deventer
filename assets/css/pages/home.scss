@@ -8,10 +8,15 @@
             align-items: center;
             flex-direction: column;
             justify-content: center;
+            @include mq($until: tablet) {
+                padding-top: 60px;
+            }
         }
 
         .col-md-8 {
-            padding-left: 37px;
+            @include mq(tablet) {
+                padding-left: 37px;
+            }
         }
 
         h1 {

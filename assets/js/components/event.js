@@ -1,3 +1,12 @@
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
 class EventView {
 
     constructor() {
@@ -19,7 +28,7 @@ class EventView {
         for (var i = 0, len = arr.length; i < len; i++) {
             event = arr[i]
             event.addEventListener('click', (e) => {
-                self.openEvent(e.srcElement || e.target);
+                self.toggleEvent(e.srcElement || e.target);
             })
         }
 
@@ -64,14 +73,14 @@ class EventView {
         if (obj) {
             setTimeout(() => {
                 obj.click()
-                this.doScrolling(obj.getBoundingClientRect().top + 50, 10)
+                this.scrollToY(obj.getBoundingClientRect().top, 500, 'easeInOutQuint')
             }, 100)
         }
     }
 
-    openEvent(el) {
+    toggleEvent(el) {
 
-        this.collapseEvents();
+        // this.collapseEvents();
 
         el = el.nodeName == 'A' ? el : this.findAncestor(el, 'event')
 
@@ -79,8 +88,12 @@ class EventView {
             event = document.querySelector('[data-id="' + id + '"]'),
             row = this.findAncestor(el, 'event-row')
 
-        event.className += " open"
-        el.className += " open"
+        if (el.classList.contains('open')) {
+            row.style.height = 'auto'
+        }
+
+        event.classList.toggle('open')
+        el.classList.toggle('open')
 
         var details = event.querySelector('.details'),
             content = event.querySelector('.content'),
@@ -88,11 +101,68 @@ class EventView {
             add = Math.max(details.getBoundingClientRect().height, content.getBoundingClientRect().height),
             height = row.getBoundingClientRect().height + add + margin
 
-        row.style.height = height + 'px'
+        if (window.innerWidth > 740) row.style.height = height + 'px'
+
+        // console.log(event.getBoundingClientRect())
 
         setTimeout(() => {
             event.className += " visible"
+            // scrollToY(0, 1500, 'easeInOutQuint');
+            // setTimeout(() => {
+                // this.scrollToY(details.getBoundingClientRect().top, 500, 'easeInOutQuint')
+            // }, 500)
         }, 500)
+    }
+
+    scrollToY(scrollTargetY, speed, easing) {
+        // scrollTargetY: the target scrollY property of the window
+        // speed: time in pixels per second
+        // easing: easing equation to use
+
+        var scrollY = window.scrollY || document.documentElement.scrollTop,
+            scrollTargetY = scrollTargetY || 0,
+            speed = speed || 2000,
+            easing = easing || 'easeOutSine',
+            currentTime = 0;
+
+        // min time .1, max time .8 seconds
+        var time = Math.max(.1, Math.min(Math.abs(scrollY - scrollTargetY) / speed, .8));
+
+        // easing equations from https://github.com/danro/easing-js/blob/master/easing.js
+        var easingEquations = {
+                easeOutSine: function (pos) {
+                    return Math.sin(pos * (Math.PI / 2));
+                },
+                easeInOutSine: function (pos) {
+                    return (-0.5 * (Math.cos(Math.PI * pos) - 1));
+                },
+                easeInOutQuint: function (pos) {
+                    if ((pos /= 0.5) < 1) {
+                        return 0.5 * Math.pow(pos, 5);
+                    }
+                    return 0.5 * (Math.pow((pos - 2), 5) + 2);
+                }
+            };
+
+        // add animation loop
+        function tick() {
+            currentTime += 1 / 60;
+
+            var p = currentTime / time;
+            var t = easingEquations[easing](p);
+
+            if (p < 1) {
+                requestAnimFrame(tick);
+
+                window.scrollTo(0, scrollY + ((scrollTargetY - scrollY) * t));
+            } else {
+                console.log('scroll done');
+                window.scrollTo(0, scrollTargetY);
+            }
+        }
+
+        // call it once to get started
+        tick();
     }
 
     doScrolling(elementY, duration) { 
