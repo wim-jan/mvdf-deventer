@@ -14,7 +14,7 @@ var EventPreview = {
         this.eventSlider = document.querySelector('.event-slider')
         this.sliderContainer = document.querySelector('.event-slider .slide-container')
 
-        var isMobile = window.innerWidth <= 800
+        var isMobile = window.innerWidth <= 740
 
         if (!this.zigzags.length || isMobile) return;
 

@@ -16,7 +16,7 @@
     cursor: pointer;
     border: 1px solid $red;
     z-index: 1000;
-    background: $white;
+    background: rgba(255, 255, 255, .9);
 
     &:focus {
         outline: none;

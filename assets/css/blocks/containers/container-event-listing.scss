@@ -15,9 +15,12 @@
     &>.inner {
         display: flex;
         align-items: flex-start;
-        padding-left: 30px;
         position: relative;
         margin-bottom: -80px;
+
+        @include mq(tablet) {
+            padding-left: 30px;
+        }
     }
 
     &.left {
