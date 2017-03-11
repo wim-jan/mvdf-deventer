@@ -7,6 +7,7 @@
     left: 0;
     background: $light;
     z-index: 1000;
+    -webkit-transform:translateZ(2px);
 
     span:not([class]) {
         position: absolute;
