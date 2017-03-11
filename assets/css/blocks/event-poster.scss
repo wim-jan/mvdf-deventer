@@ -1,4 +1,8 @@
 .container.event-listing {
+    .clip-svg {
+        width: 0;
+        height: 0;
+    }
 
     .inner {
         &:first-child {
@@ -131,11 +135,11 @@
                     }
                     
                     left: -10px;
-                    top: -11.2vw;
+                    top: -15.5vw;
 
                     @include mq(tablet) {
                         left: -20px;
-                        top: -98px;
+                        top: -128px;
                     }
 
                     span {
@@ -152,11 +156,12 @@
                         &.small {
                             position: absolute;
                             font-size: .6rem;
-                            bottom: -7px;
+                            bottom: 10px;
                             z-index: 300;
 
                             @include mq(tablet) {
                                 font-size: .8rem;
+                                bottom: 20px;
                             }
                         }
                     }
@@ -170,14 +175,13 @@
                         @include hexagon(rgba(0, 0, 0, .8), 50px);
                     }
                     
-                    top: -32.7vw;
+                    top: -39.3vw;
                     left: 4.9vw;
 
                     @include mq(tablet) {
-                        top: -242px;
+                        top: -287px;
                         left: 30px;
                     }
-
 
                     i {
                         font-size: .8rem;
