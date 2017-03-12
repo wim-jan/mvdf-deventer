@@ -7,7 +7,7 @@ window.requestAnimFrame = (function(){
           };
 })();
 
-window.ga = window['ga'] || {};
+window.ga = window['ga'] || new Function
 
 class EventView {
 
@@ -167,11 +167,17 @@ class EventView {
     }
 
     trackEvent() {
+        var path = location.pathname + location.search  + location.hash
+
         window.ga('send', 'event', {
             eventCategory: 'Programma link',
             eventAction: 'click',
-            eventLabel: window.location.href
+            eventLabel: path
         })
+
+        window.ga('send', 'pageview', {
+            'page': path
+        });
     }
 }
 
