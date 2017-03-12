@@ -7,6 +7,8 @@ window.requestAnimFrame = (function(){
           };
 })();
 
+window.ga = window['ga'] || {};
+
 class EventView {
 
     constructor() {
@@ -80,8 +82,6 @@ class EventView {
 
     toggleEvent(el) {
 
-        // this.collapseEvents();
-
         el = el.nodeName == 'A' ? el : this.findAncestor(el, 'event')
 
         var id = el.href.match(/\#(.*)$/)[1],
@@ -103,14 +103,10 @@ class EventView {
 
         if (window.innerWidth > 740) row.style.height = height + 'px'
 
-        // console.log(event.getBoundingClientRect())
+        this.trackEvent()
 
         setTimeout(() => {
             event.className += " visible"
-            // scrollToY(0, 1500, 'easeInOutQuint');
-            // setTimeout(() => {
-                // this.scrollToY(details.getBoundingClientRect().top, 500, 'easeInOutQuint')
-            // }, 500)
         }, 500)
     }
 
@@ -165,31 +161,17 @@ class EventView {
         tick();
     }
 
-    doScrolling(elementY, duration) { 
-        var startingY = window.pageYOffset  
-        var diff = elementY - startingY  
-        var start
-
-        // Bootstrap our animation - it will get called right before next frame shall be rendered.
-        window.requestAnimationFrame(function step(timestamp) {
-            if (!start) start = timestamp
-            // Elapsed miliseconds since start of scrolling.
-            var time = timestamp - start
-            // Get percent of completion in range [0, 1].
-            var percent = Math.min(time / duration, 1)
-
-            window.scrollTo(0, startingY + diff * percent)
-
-            // Proceed with animation as long as we wanted it to.
-            if (time < duration) {
-                window.requestAnimationFrame(step)
-            }
-        })
-    }
-
     findAncestor (el, cls) {
         while ((el = el.parentElement) && !el.classList.contains(cls));
         return el;
+    }
+
+    trackEvent() {
+        window.ga('send', 'event', {
+            eventCategory: 'Programma link',
+            eventAction: 'click',
+            eventLabel: window.location.href
+        })
     }
 }
 

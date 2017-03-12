@@ -17,7 +17,7 @@ var MapBox = {
             scrollWheelZoom: false,
             maxZoom: 18,
             minZoom: 12
-        }).setView([52.253641, 6.155691], 16);
+        }).setView([52.253641, 6.155691], 15);
 
         var styleLayer = L.mapbox.styleLayer(this.styleUrl)
             .addTo(this.map);
@@ -41,7 +41,8 @@ var MapBox = {
 
     addMarkers: function() {
         var c = null,
-            arr = this.coordinates
+            arr = this.coordinates,
+            markers = []
 
         this.coordinates.map((c) => {
             var icon = L.divIcon({
@@ -58,7 +59,12 @@ var MapBox = {
                 .on('mouseout', (e) => {
                     this.highlightEvent(null)
                 })
+            markers.push(marker)
         })
+
+        var group = new L.featureGroup(markers);
+
+        // this.map.fitBounds(group.getBounds());
     },
 
     highlightEvent: function(id) {
