@@ -158,10 +158,12 @@
                             font-size: .6rem;
                             bottom: 10px;
                             z-index: 300;
+                            left: 18px;
 
                             @include mq(tablet) {
                                 font-size: .8rem;
                                 bottom: 20px;
+                                left: auto;
                             }
                         }
                     }
@@ -248,6 +250,8 @@
                     margin: 15px auto;
                     min-width: 230px;
                     width: 230px;
+                    position: relative;
+                    z-index: 1000;
                 }
 
                 hr {
