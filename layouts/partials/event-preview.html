@@ -10,11 +10,11 @@
             </span>
             <span class="category">
                 {{ if eq .Params.category.name "Toegepast" }}
-                        <i class="fa fa-eye"></i>
+                        <i class="fa fa-comments"></i>
                 {{ else if eq .Params.category.name "Academisch" }}
                     <i class="fa fa-graduation-cap"></i>
                 {{ else }}
-                    <i class="fa fa-comments"></i>
+                    <i class="fa fa-eye"></i>
                 {{ end }}
             </span>
             <div class="poster" style="background-image: url({{ .Params.photo.url }}&w=300)">
