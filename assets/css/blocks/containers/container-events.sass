@@ -53,8 +53,8 @@
             left: 0
 
             .slide-container
-                @include transition(left 1s)
-                @include transition-timing-function(ease-out)    
+                @include transition(left .3s)
+                @include transition-timing-function(cubic-bezier(0.455, 0.03, 0.515, 0.955))    
                 display: block
                 position: absolute
                 width: 9999px
@@ -71,3 +71,44 @@
 
         @include mq(tablet)
             display: none
+
+    .navigation
+        display: flex
+        height: 100%
+
+        a
+            display: none
+
+            @include mq(tablet)
+                display: flex
+                flex-direction: column
+                justify-content: center
+                width: 50px
+                height: calc(100% - 50px)
+                margin-top: 10px
+                padding: 10px
+                z-index: 500
+
+                .hide
+                    display: none
+                
+                &:hover, &:focus
+                    text-decoration: none
+
+                &#prev
+                    position: relative
+                    left: 16px
+
+                    &:hover
+                        background: radial-gradient(ellipse at 0, rgba(0, 0, 0, 0.4) 0%, transparent 50%)
+
+                &#next
+                    position: absolute
+                    right: 0px
+
+                    &:hover
+                        background: radial-gradient(ellipse at 50px, rgba(0, 0, 0, 0.5) 0%, transparent 50%)
+
+                i
+                    font-size: 4rem
+                    color: $white
