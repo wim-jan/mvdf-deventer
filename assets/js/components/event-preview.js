@@ -63,7 +63,7 @@ var EventPreview = {
                     el = null
                 for (var x = 0, lenx = open.length; x < lenx; x++) {
                     el = open[x]
-                    el.className = el.classList.toggle('highlight')
+                    el.classList.toggle('highlight')
                 }
                 // Map.highlightIcon(ev.dataset.id)
             })
@@ -103,7 +103,7 @@ var EventPreview = {
             this.slideToEvent(event)
         }
 
-        event.className += ' highlight'
+        event.classList.toggle('highlight')
         this.currentEvent = id
     },
 
@@ -113,7 +113,7 @@ var EventPreview = {
             
         for (var i = 0, len = arr.length; i < len; i++) {
             ce = arr[i]
-            ce.className = ce.className.replace(' highlight', '')
+            ce.className = ce.classList.toggle('highlight')
         }
     },
 
