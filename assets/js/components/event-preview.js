@@ -136,7 +136,7 @@ var EventPreview = {
             this.prev.classList.toggle('hide')
         }
 
-        if ((index + 1) * this.eventsPerView > this.events.length
+        if ((index + 1) * this.eventsPerView >= this.events.length
             || index * this.eventsPerView < this.events.length && this.next.classList.contains('hide')) {
             this.next.classList.toggle('hide')
         }
