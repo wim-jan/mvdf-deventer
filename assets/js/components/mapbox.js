@@ -41,8 +41,7 @@ var MapBox = {
 
     addMarkers: function() {
         var c = null,
-            arr = this.coordinates,
-            markers = []
+            arr = this.coordinates
 
         this.coordinates.map((c) => {
             var icon = L.divIcon({
@@ -53,18 +52,7 @@ var MapBox = {
                 .on('click', (e) => {
                     this.highlightEvent(c.id)
                 })
-                .on('mouseover', (e) => {
-                    this.highlightEvent(c.id)
-                })
-                .on('mouseout', (e) => {
-                    this.highlightEvent(null)
-                })
-            markers.push(marker)
         })
-
-        var group = new L.featureGroup(markers);
-
-        // this.map.fitBounds(group.getBounds());
     },
 
     highlightEvent: function(id) {
@@ -72,9 +60,9 @@ var MapBox = {
     },
 
     highlightIcon: function(id) {
-        icon = document.getElementById('svg[data-id="' + id + '"]')
+        var icon = document.querySelector('svg[data-id="' + id + '"]')
         if (!icon) return
-        icon.className = icon.className == 'active' ? '' : 'active'
+        icon.classList.toggle('active')
     },
 
     marker: function(color, id) {

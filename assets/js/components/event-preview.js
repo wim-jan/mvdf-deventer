@@ -57,17 +57,17 @@ var EventPreview = {
             return false
         })
 
-        for (var i = 0, len = arr.length; i < len; i++) {
-            ev = arr[i]
-            ev.addEventListener('mouseover', (e) => {
+        Array.prototype.slice.call(this.events).map((ev) => {
+            ev.addEventListener('mouseover', (event) => {
                 var open = document.querySelectorAll('.event.preview.highlight'),
                     el = null
                 for (var x = 0, lenx = open.length; x < lenx; x++) {
                     el = open[x]
-                    el.className = el.className.replace(' highlight', '')
+                    el.className = el.classList.toggle('highlight')
                 }
+                // Map.highlightIcon(ev.dataset.id)
             })
-        }
+        })
     },
 
     position: function () {
@@ -150,22 +150,11 @@ var EventPreview = {
     },
 
     slideToEvent: function(event) {
-        console.log(event)
-        var width = this.events[0].scrollWidth,
-            rect = event.getBoundingClientRect(),
-            cRect = this.eventSlider.getBoundingClientRect(),
-            minLeft = cRect.left,
-            maxRight = window.innerWidth,
-            left = 15,
-            arr = Array.prototype.slice.call(this.events)
-        
-        if (rect.right > maxRight) {
-            left -= rect.right - maxRight
-        } else if (rect.left < minLeft) {
-            left += (0 - (arr.indexOf(event) * width))
-        }
 
-        this.sliderContainer.style.left = left + 'px'
+        var events = Array.prototype.slice.call(this.events),
+            index = Math.floor(events.indexOf(event) / this.eventsPerView)
+
+        this.slide(index)
     }
 }
 
