@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-12">
                 <ul>
-                {{ range where .Site.Pages "Section" "partner" }}
+                {{ range first 4 (where .Site.Pages "Section" "partner") }}
                 
                     {{ $title := lower .Params.name | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "[^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
 
