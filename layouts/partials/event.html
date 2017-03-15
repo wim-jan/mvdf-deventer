@@ -12,7 +12,7 @@
                         </div>
                         <div class="date hexagon">
                             <span>{{ .Params.datetime | dateFormat "2" }}</span>
-                            <span class="small">april</span>
+                            <span class="small">{{ index .Site.Params.months ( int (.Params.datetime | dateFormat "01") ) }}</span>
                         </div>
                         {{ if eq .Params.category.name "Toegepast" }}
                             <div class="category hexagon">
