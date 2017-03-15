@@ -2,12 +2,7 @@ baseurl = "/"
 
 [params]
   env = "production"
-
-[[menu.main]]
-  name = "Home"
-  weight = 1
-  identifier = "home"
-  url = "/"
+  months = [ "null", "januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december" ]
 
 # datocms:start
 title = "Maand van de Filosofie Deventer"

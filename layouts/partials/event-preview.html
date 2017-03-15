@@ -6,7 +6,7 @@
         <a href="/programma/#{{ $title }}">
             <span class="date">
                 <span class="day">{{ .Params.datetime | dateFormat "2" }}</span>
-                april - 2017
+                {{ index .Site.Params.months ( int (.Params.datetime | dateFormat "01") ) }} {{ .Params.datetime | dateFormat "2006" }}
             </span>
             <span class="category">
                 {{ if eq .Params.category.name "Toegepast" }}
