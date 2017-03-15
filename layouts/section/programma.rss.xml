@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maand van de Filosofie Deventer</title>
+    <link>https://filosoferenindeventer.nl</link>
+    <atom:link href="https://filosoferenindeventer.nl/programma/index.xml" rel="self" type="application/rss+xml" />
+    <description>Maand van de Filosofie Deventer - Programma</description>
+    <language>nl-nl</language>
+    <copyright>Copyright 2017 Maand van de Filosofie Deventer</copyright>
+    <lastBuildDate>{{ .Now.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    {{ range sort (where .Data.Pages "Section" "programma") ".Params.datetime" }}
+    {{ $title := lower .Title | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "[^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>https://filosoferenindeventer.nl/programma/#{{ $title }}</link>
+      <guid>https://filosoferenindeventer.nl/programma/#{{ $title }}</guid>
+      <pubDate>{{ .Params.datetime | dateFormat "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <description>
+        {{ if .Params.cost }}entree: {{ .Params.cost | html }} <br />{{ end }}
+        {{ if .Params.locationtext }}locatie: {{ .Params.locationtext | html }} <br />{{ end }}
+        {{ .Params.introduction | html }}
+      </description>
+    </item>
+    {{ end }}
+  </channel>
+</rss>
