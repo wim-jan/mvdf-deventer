@@ -58,6 +58,17 @@ module.exports = (dato, root, i18n) => {
     content: dato.contact.content
   });
 
+  root.createPost(`content/over-ons.md`, 'yaml', {
+    frontmatter: {
+      title: dato.about.title,
+      introduction: dato.about.introduction,
+      itemType: 'about',
+      photo: dato.about.photo,
+      image: dato.about.image
+    },
+    content: dato.about.organization
+  });
+
   root.createPost(`content/privacy.md`, 'yaml', {
     frontmatter: {
       title: dato.privacy.title,
@@ -68,13 +79,4 @@ module.exports = (dato, root, i18n) => {
     },
     content: dato.privacy.content
   });
-
-  // root.directory('./content', dir => {
-  //   dato.singleInstanceItemTypes.forEach(itemType => {
-  //     const item = dato.itemsOfType(itemType) ? dato.itemsOfType(itemType)[0] : null;
-  //     if (item) {
-  //       dir.createPost(`${slugify(item.title)}.md`, 'yaml', { frontmatter: item.toMap(), content: item.content });
-  //     }
-  //   });
-  // });
 };
