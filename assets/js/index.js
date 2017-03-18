@@ -42,6 +42,7 @@ import mapBox from './components/mapbox'
 import EventView from './components/event'
 import Banner from './components/console-banner'
 import Hamburger from './components/hamburger-menu'
+import Contact from './components/contact'
 
 
 window.addEventListener('load', (e) => {
@@ -52,9 +53,11 @@ window.addEventListener('load', (e) => {
 		body.className = body.className.replace('loading', '')
 		
 		var banner = new Banner()
-		eventPreview.init()
-		mapBox.init()
 		var eventView = new EventView()
 		var hamburger = new Hamburger()
+		var contact = new Contact()
+
+		eventPreview.init()
+		mapBox.init()
 	}, 2000)
 })

@@ -1,0 +1,39 @@
+.contact-form {
+    form, .confirmation {
+        height: 320px;
+    }
+    .confirmation {
+        display: none;
+        position: relative;
+        background: rgba($white, .8);
+        padding: 0 60px;
+        margin-top: -320px;
+        align-items: center;
+
+        &.visible {
+            display: flex;
+        }
+
+        svg {
+                width: 500px;
+                margin-right: 30px;
+        }
+
+        .path {
+            stroke-linecap: round;
+            stroke-dasharray: 27;
+            stroke-dashoffset: -23;
+            animation: dash 500ms ease forwards;
+            stroke: $purple;
+        }
+
+        p {
+            
+        }
+    }
+    @keyframes dash {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+}

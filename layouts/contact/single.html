@@ -1,0 +1,62 @@
+{{ partial "header.html" . }}
+<div class="container outer home">
+    <div class="container inner">
+        <section class="header">
+            <div class="col-md-4 col-xs-12">
+                <img src="/img/logo.png" alt="Maand van de Filosofie Deventer" />
+            </div>
+            <div class="col-md-8 col-xs-12">
+                <h1>{{ .Title }}</h1>
+                {{ .Params.introduction | markdownify }}
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="container outer zigzag red">
+    <div class="container inner">
+        <div class="col-md-8 col-md-offset-2 col-xs-12">
+            {{ .Content }}
+        </div>
+    </div>
+</div>
+
+<div class="container outer contact-form">
+    <div class="container inner">
+        <div class="col-md-10 col-md-offset-1">
+            <h2>{{ .Params.contactformtitle }}</h2>
+            {{ .Params.contactformcontent | markdownify }}
+            <form id="contactform"> 
+                <input class="hidden" type="text" name="_gotcha">
+                <input type="hidden" name="_subject" value="Bericht vanaf de website">
+                <div class="form-row">
+                    <label>
+                        <span class="label">E-mail adres</span>
+                        <input type="email" name="E-mail adres" /> 
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <span class="label">Bericht</span>
+                        <textarea name="Bericht" cols="40" rows="6"></textarea>
+                    </label>
+                </div>
+                <div class="form-row">
+                    <button type="submit" class="button red"> Verstuur! </button>
+                    <span style="display:none"> Should be Empty: <input type="text" name="website" value="" /> </span>
+                </div>
+            </form>
+            <div class="confirmation">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 24 24" id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve"><polyline class="path" fill="none" points="20,6 9,17 4,12" stroke="#000000" stroke-miterlimit="10" stroke-width="2"/></svg>
+                <p>
+                    Bedankt voor je reactie! We hebben je bericht ontvangen. 
+                    We laten zo snel mogelijk iets van ons horen. 
+                    Heb je je al aangemeld voor een van de vele activiteiten op ons <a href="/programma">programma</a>?
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{{ partial "partners.html" . }} 
+
+{{ partial "footer.html" . }}

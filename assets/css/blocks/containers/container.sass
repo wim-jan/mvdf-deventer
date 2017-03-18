@@ -10,3 +10,9 @@
     &.zigzag
         &.white
             @include zigzag($white, transparent)
+            background: $white
+
+        &.red
+            @include zigzag($red, transparent)
+            background: $red
+            color: $white

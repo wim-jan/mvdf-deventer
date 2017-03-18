@@ -47,13 +47,15 @@ module.exports = (dato, root, i18n) => {
     content: dato.deventer.content
   });
 
-  root.createPost(`content/contact.md`, 'yaml', {
+  root.createPost(`content/contact/index.md`, 'yaml', {
     frontmatter: {
       title: dato.contact.title,
       introduction: dato.contact.introduction,
       itemType: 'contact',
       photo: dato.contact.photo,
-      image: dato.contact.image
+      image: dato.contact.image,
+      contactformtitle: dato.contact.contactformtitle,
+      contactformcontent: dato.contact.contactformcontent
     },
     content: dato.contact.content
   });
