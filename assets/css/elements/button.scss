@@ -71,10 +71,48 @@
         }
 
         i {
-            border-color: rgba($dark, .9)
+            border-color: rgba($dark, .9);
 
             &:after {
                 background-color: $dark;
+            }
+        }
+    }
+
+    &.silver {
+        background-color: $silver;
+        color: $dark;
+        text-decoration: none;
+
+        &:hover {
+            background-color: $silver_light;
+        }
+
+        i {
+            border-color: rgba($silver_dark, .9);
+
+            &:after {
+                background-color: $silver_dark;
+            }
+        }
+    }
+
+
+
+    &.purple {
+        background-color: $purple_dark;
+        color: $white;
+        text-decoration: none;
+
+        &:hover {
+            background-color: $purple;
+        }
+
+        i {
+            border-color: rgba($purple, .9);
+
+            &:after {
+                background-color: $purple_dark;
             }
         }
     }

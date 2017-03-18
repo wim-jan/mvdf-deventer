@@ -7,13 +7,15 @@
             </div>
             <div class="col-md-8 col-xs-12">
                 <h1>{{ .Title }}</h1>
-                {{ .Params.introduction | markdownify }}
+                <p>
+                    {{ .Params.introduction | markdownify }}
+                </p>
             </div>
         </section>
     </div>
 </div>
 
-<div class="container outer zigzag red">
+<div class="container outer zigzag red sponsor">
     <div class="container inner">
         <div class="col-md-8 col-md-offset-2 col-xs-12">
             {{ .Content }}
@@ -23,9 +25,11 @@
 
 <div class="container outer contact-form">
     <div class="container inner">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1 col-xs-12 padding">
             <h2>{{ .Params.contactformtitle }}</h2>
-            {{ .Params.contactformcontent | markdownify }}
+            <p>
+                {{ .Params.contactformcontent | markdownify }}
+            </p>
             <form id="contactform"> 
                 <input class="hidden" type="text" name="_gotcha">
                 <input type="hidden" name="_subject" value="Bericht vanaf de website">
@@ -51,7 +55,7 @@
                 <p>
                     Bedankt voor je reactie! We hebben je bericht ontvangen. 
                     We laten zo snel mogelijk iets van ons horen. 
-                    Heb je je al aangemeld voor een van de vele activiteiten op ons <a href="/programma">programma</a>?
+                    Heb je je al aangemeld voor een van de vele activiteiten in ons <a href="/programma">programma</a>?
                 </p>
             </div>
         </div>

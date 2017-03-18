@@ -36,13 +36,31 @@
         .tiles {
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
 
             a {
                 display: block;
-                width: 25%;
+                width: 24%;
+            }
+        }
+
+        .heading {
+            margin: 100px 0;
+
+            .heading-ruler{
+                display: block !important;
+                position: absolute;
+                width: 100%;
+                z-index: -10;
+                top: 50%;
+                margin: 0 !important;
+                background-color: $silver;
+
+                @include firefox-only() {
+                    transform: translateX(-50%);
+                }
             }
         }
     }
