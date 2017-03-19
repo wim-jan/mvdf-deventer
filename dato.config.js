@@ -60,16 +60,17 @@ module.exports = (dato, root, i18n) => {
     content: dato.contact.content
   });
 
-  root.createPost(`content/over-ons.md`, 'yaml', {
-    frontmatter: {
-      title: dato.about.title,
-      introduction: dato.about.introduction,
-      itemType: 'about',
-      photo: dato.about.photo,
-      image: dato.about.image
-    },
-    content: dato.about.organization
-  });
+  if (dato.about) {
+    root.createPost(`content/over-ons.md`, 'yaml', {
+      frontmatter: {
+        title: dato.about.title,
+        introduction: dato.about.introduction,
+        itemType: 'about',
+        photo: dato.about.photo
+      },
+      content: dato.about.organization
+    });
+  }
 
   root.createPost(`content/privacy.md`, 'yaml', {
     frontmatter: {
