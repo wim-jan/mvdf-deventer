@@ -314,6 +314,32 @@
                 p {
                     margin-bottom: 15px;
                 }
+
+                .share-buttons {
+                    display: flex;
+
+                    li {
+                        a {
+
+                            @include hexagon($red, 40px);
+                            @include transition(background-color .2s);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-right: 15px;
+                            color: $white;
+
+                            &:hover {
+                                background-color: $red-dark;
+                                text-decoration: none;
+                            }
+
+                            i {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

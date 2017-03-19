@@ -1,4 +1,5 @@
 {{ $title := lower .Title | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "[^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
+{{ $url := printf "https://filosoferenindeventer.nl/programma/%s" $title }}
 
 <div class="container inner event-row">
     <article>
@@ -46,7 +47,7 @@
                 {{ end }}
                 <ul>
                     {{ if .Params.cost }}<li><span class="hexagon"><i class="fa fa-money"></i></span><span>{{ .Params.cost | markdownify }}</span></li>{{ end }}
-                    <li><span class="hexagon"><i class="fa fa-calendar"></i></span><span>{{ .Params.datetime | dateFormat "2" }} april 2017</span></li>
+                    <li><span class="hexagon"><i class="fa fa-calendar"></i></span><span>{{ .Params.datetime | dateFormat "2" }} {{ index .Site.Params.months ( int (.Params.datetime | dateFormat "01") ) }} 2017</span></li>
                     <li><span class="hexagon"><i class="fa fa-clock-o"></i></span><span>{{ .Params.datetime | dateFormat "15:04" }} uur</span></li>
                     <li><span class="hexagon"><i class="fa fa-map-marker"></i></span><span>{{ .Params.locationtext }}</span></li>
                 </ul>
@@ -55,6 +56,7 @@
                 <p>
                     {{ .Params.content | markdownify }}
                 </p>
+                {{ partial "socialbuttons.html" (dict "title" .Title "url" $url ) }}
             </div>
         </div>
     </article>
