@@ -47,15 +47,28 @@ module.exports = (dato, root, i18n) => {
     content: dato.deventer.content
   });
 
-  root.createPost(`content/contact.md`, 'yaml', {
+  root.createPost(`content/contact/index.md`, 'yaml', {
     frontmatter: {
       title: dato.contact.title,
       introduction: dato.contact.introduction,
       itemType: 'contact',
       photo: dato.contact.photo,
-      image: dato.contact.image
+      image: dato.contact.image,
+      contactformtitle: dato.contact.contactformtitle,
+      contactformcontent: dato.contact.contactformcontent
     },
     content: dato.contact.content
+  });
+
+  root.createPost(`content/over-ons.md`, 'yaml', {
+    frontmatter: {
+      title: dato.about.title,
+      introduction: dato.about.introduction,
+      itemType: 'about',
+      photo: dato.about.photo,
+      image: dato.about.image
+    },
+    content: dato.about.organization
   });
 
   root.createPost(`content/privacy.md`, 'yaml', {
@@ -68,13 +81,4 @@ module.exports = (dato, root, i18n) => {
     },
     content: dato.privacy.content
   });
-
-  // root.directory('./content', dir => {
-  //   dato.singleInstanceItemTypes.forEach(itemType => {
-  //     const item = dato.itemsOfType(itemType) ? dato.itemsOfType(itemType)[0] : null;
-  //     if (item) {
-  //       dir.createPost(`${slugify(item.title)}.md`, 'yaml', { frontmatter: item.toMap(), content: item.content });
-  //     }
-  //   });
-  // });
 };

@@ -2,24 +2,43 @@
 
 <div class="container outer partners">
     {{ range (where .Data.Pages "Section" "partner") }}
-        {{ $title := lower .Params.name | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "[^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
+        {{ if .Params.showwithtext }}
+            {{ $title := lower .Params.name | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "[^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
 
-        <div class="container inner">
-            <div class="col-md-4">
-                <img src="{{ .Params.logo.url }}">
+            <div class="container inner">
+                <div class="col-md-4">
+                    <img src="{{ .Params.logo.url }}">
+                </div>
+                <div class="col-md-8">
+                    <h1 id="{{ $title }}">{{ .Params.name }}</h1>
+                    <p>
+                        {{ .Content }}
+                    </p>
+                    <a href="{{ .Params.externallink }}" class="button red fluid" target="_blank"><i class="fa fa-external-link"></i>Ga naar de website van {{ .Params.name }}</a>
+                </div>
+                <div class="col-xs-12">
+                    <hr>
+                </div>
             </div>
-            <div class="col-md-8">
-                <h1 id="{{ $title }}">{{ .Params.name }}</h1>
-                <p>
-                    {{ .Content }}
-                </p>
-                <a href="{{ .Params.externallink }}" class="button red fluid" target="_blank"><i class="fa fa-external-link"></i>Ga naar de website van {{ .Params.name }}</a>
-            </div>
-            <div class="col-xs-12">
-                <hr>
-            </div>
-        </div>
+        {{ end }}
     {{ end }}
 </div>
 
+<div class="container outer partners zigzag white">
+    <div class="container inner">
+        <section class="partners">
+            <div class="heading col-md-12">
+                <span>Sponsoren</span>
+                <hr class="heading-ruler">
+            </div>
+            <div class="col-md-12 tiles">
+            {{ range (where .Data.Pages "Section" "partner") }}
+                {{ if not .Params.showwithtext }}
+                    <a href="{{ .Params.externallink }}"><img src="{{ .Params.logo.url }}"></a>
+                {{ end }}
+            {{ end }}
+            </div>
+        </section>
+    </div>
+</div>
 {{ partial "footer.html" . }}

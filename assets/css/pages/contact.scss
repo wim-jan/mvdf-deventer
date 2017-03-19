@@ -1,0 +1,63 @@
+.sponsor {
+    &>div>div {
+        padding: 30px 0;
+    }
+
+    h2 {
+        color: $white;
+        margin-bottom: 15px;
+    }
+}
+
+.contact-form {
+    form, .confirmation {
+        height: 320px;
+    }
+
+    .padding {
+        padding: 30px;
+    }
+
+    h2 {
+        margin: 30px 0 15px;
+    }
+
+    &>div>div>p {
+        margin-bottom: 30px;
+    }
+
+    .confirmation {
+        display: none;
+        position: relative;
+        background: rgba($white, .8);
+        padding: 0 60px;
+        margin-top: -320px;
+        align-items: center;
+
+        &.visible {
+            display: flex;
+        }
+
+        svg {
+            width: 500px;
+            margin-right: 30px;
+        }
+
+        .path {
+            stroke-linecap: round;
+            stroke-dasharray: 27;
+            stroke-dashoffset: -23;
+            animation: dash 500ms ease forwards;
+            stroke: $purple;
+        }
+
+        p {
+            
+        }
+    }
+    @keyframes dash {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+}
