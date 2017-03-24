@@ -1,7 +1,8 @@
 {{ partial "header.html" . }}
 
 <div class="container outer partners">
-    {{ range (where .Data.Pages "Section" "partner") }}
+    {{ range (sort (where .Data.Pages "Section" "partner") ".Params.position" "asc" ) }}
+
         {{ if .Params.showwithtext }}
             {{ $title := lower .Params.name | replaceRE "\\s+" "-" | replaceRE "\\?" "" | replaceRE "[^\\w\\-]+" "" | replaceRE "\\-\\-+" "-" | replaceRE "^-+" "" | replaceRE "-+$" "" }}
 
@@ -32,7 +33,7 @@
                 <hr class="heading-ruler">
             </div>
             <div class="col-md-12 tiles">
-            {{ range (where .Data.Pages "Section" "partner") }}
+            {{ range (sort (where .Data.Pages "Section" "partner") ".Params.position" "asc" ) }}
                 {{ if not .Params.showwithtext }}
                     <a href="{{ .Params.externallink }}"><img src="{{ .Params.logo.url }}"></a>
                 {{ end }}

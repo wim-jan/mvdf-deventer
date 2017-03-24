@@ -53,3 +53,7 @@ p, span {
 strong {
     @include default-bold();
 }
+
+i {
+    font-style: italic;
+}

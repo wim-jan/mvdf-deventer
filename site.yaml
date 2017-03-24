@@ -1,10 +1,10 @@
-id: '1657'
-name: Maand van de Filosofie Deventer - development
+id: '970'
+name: Maand van de Filosofie Deventer
 locales:
   - en
-themeHue: 190
+themeHue: 4
 domain: null
-internalDomain: maand-van-de-filosofie-deventer-development.admin.datocms.com
+internalDomain: maand-van-de-filosofie-deventer.admin.datocms.com
 noIndex: false
 globalSeo:
   siteName: Maand van de Filosofie Deventer
@@ -30,4 +30,4 @@ faviconMetaTags:
   - tagName: meta
     attributes:
       name: application-name
-      content: Maand van de Filosofie Deventer - development
+      content: Maand van de Filosofie Deventer

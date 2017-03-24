@@ -66,7 +66,7 @@ module.exports = (dato, root, i18n) => {
         title: dato.about.title,
         introduction: dato.about.introduction,
         itemType: 'about',
-        photo: dato.about.photo
+        image: dato.about.image
       },
       content: dato.about.organization
     });
