@@ -40,15 +40,18 @@ section.partners {
     ul {
         display: flex;
         overflow: hidden;
-        justify-content: space-between;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 5%;
 
         li {
             display: flex;
-            width: 8%;
+            width: 12%;
             flex-shrink: 0;
             justify-content: center;
             align-items: center;
             position: relative;
+            margin: 0 4%;
 
             img {
                 @include transition(filter .2s);
