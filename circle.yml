@@ -4,7 +4,7 @@ machine:
 dependencies:
   override:
     # if your project uses Yarn as package manager, replace "npm install" with "yarn"
-    - npm install webpack
+    - npm install webpack -g
     - yarn install
     # download latest version of hugo
     - wget https://github.com/spf13/hugo/releases/download/v0.19/hugo_0.19-64bit.deb
