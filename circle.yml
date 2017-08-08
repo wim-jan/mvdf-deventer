@@ -1,0 +1,22 @@
+machine:
+  node:
+    version: 6.7.0
+dependencies:
+  override:
+    # if your project uses Yarn as package manager, replace "npm install" with "yarn"
+    - npm install
+    # download latest version of hugo
+    - wget https://github.com/spf13/hugo/releases/download/v0.19/hugo_0.19-64bit.deb
+    # install it
+    - sudo dpkg -i hugo*.deb
+test:
+  override:
+    # first dump all the remote content as local files
+    - ./node_modules/.bin/dato dump
+    # then generate the website
+    - hugo
+deployment:
+  production:
+    branch: master
+    commands:
+      - find . -type f -exec curl -u $FTP_USER:$FTP_PASS --ftp-create-dirs -T {} $FTP_SERVER/{} \;
