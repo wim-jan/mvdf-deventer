@@ -20,4 +20,4 @@ deployment:
   production:
     branch: master
     commands:
-      - find . -type f -exec curl -u $FTP_USER:$FTP_PASS --ftp-create-dirs -T {} $FTP_SERVER/{} \;
+      - find ./public/ -type f -exec curl -u $FTP_USER:$FTP_PASS --ftp-create-dirs -T {} $FTP_SERVER/{} \;
