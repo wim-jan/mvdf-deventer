@@ -21,3 +21,6 @@ deployment:
     branch: master
     commands:
       - cd public && find . -type f -exec curl -u $FTP_USER:$FTP_PASS --ftp-create-dirs -T {} $FTP_SERVER/{} \;
+notify:
+  webhooks:
+  - url: https://webhooks.datocms.com/423ca10e6205e4f39c59/deploy-results
