@@ -12,9 +12,9 @@ dependencies:
 test:
   override:
     # first dump all the remote content as local files
-    - ./node_modules/.bin/dato dump
+    - ./node_modules/.bin/dato dump --token=$DATOCMS_TOKEN
     # then generate the website
-    - hugo
+    - NODE_ENV=production hugo --config ./config.prod.toml && NODE_ENV=production webpack -p --config webpack.prod.config.js
 deployment:
   production:
     branch: master
